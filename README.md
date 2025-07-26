@@ -1,4 +1,4 @@
-### Robocup Research Project
+## Robocup Research Project
 
 This project explores **collaborative perception** in the RoboCup 3D Soccer Simulation League. It focuses on **ball perception** through agent communication and a voting-based consensus system. The aim is to improve multi-agent coordination by integrating shared perception data.
 
