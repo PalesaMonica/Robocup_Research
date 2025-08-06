@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from behaviors.Behavior import Behavior
-from communication.Radio import Radio
+from communication.test_comm import Communicate
 from communication.Server_Comm import Server_Comm
 from communication.World_Parser import World_Parser
 from logs.Logger import Logger
@@ -14,7 +14,7 @@ class Base_Agent():
     def __init__(self, host:str, agent_port:int, monitor_port:int, unum:int, robot_type:int, team_name:str, enable_log:bool=True,
                   enable_draw:bool=True, apply_play_mode_correction:bool=True, wait_for_server:bool=True, hear_callback=None) -> None:
 
-        self.radio = None # hear_message may be called during Server_Comm instantiation
+        self.communicator  = None # hear_message may be called during Server_Comm instantiation
         self.logger = Logger(enable_log, f"{team_name}_{unum}")
         self.world = World(robot_type, team_name, unum, apply_play_mode_correction, enable_draw, self.logger, host)
         self.world_parser = World_Parser(self.world, self.hear_message if hear_callback is None else hear_callback)
@@ -22,17 +22,21 @@ class Base_Agent():
         self.inv_kinematics = Inverse_Kinematics(self.world.robot)
         self.behavior = Behavior(self)
         self.path_manager = Path_Manager(self.world)
-        self.radio = Radio(self.world, self.scom.commit_announcement)
+        self.communicator  = Communicate(self.world, self.scom.commit_announcement)
         self.behavior.create_behaviors()
         Base_Agent.all_agents.append(self)
 
     @abstractmethod
     def think_and_send(self):
-        pass
+        if self.world.robot.unum ==1:
+            self.communicator.broadcast()
+        else:
+           pass
 
     def hear_message(self, msg:bytearray, direction, timestamp:float) -> None:
-        if direction != "self" and self.radio is not None:
-            self.radio.receive(msg)
+        if direction != "self" and self.communicator is not None:
+            #self.radio.receive(msg)
+            self.communicator.receive(msg)
 
     def terminate(self):
         # close shared monitor socket if this is the last agent on this thread

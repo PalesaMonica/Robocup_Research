@@ -305,3 +305,5 @@ class Script():
         for p in self.players[index]:
             p.terminate()
         del self.players[index] # delete selection
+
+        
