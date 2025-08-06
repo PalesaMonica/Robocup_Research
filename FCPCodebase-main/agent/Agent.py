@@ -211,7 +211,7 @@ class Agent(Base_Agent):
             path_draw_options(enable_obstacles=False, enable_path=False) # disable path drawings
 
         #--------------------------------------- 3. Broadcast
-        self.radio.broadcast()
+        self.communicator.broadcast()
 
         #--------------------------------------- 4. Send to server
         if self.fat_proxy_cmd is None: # normal behavior

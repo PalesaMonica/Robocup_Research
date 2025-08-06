@@ -1,6 +1,6 @@
 from world.World import World
 
-class Communicate:
+class Communicate():
     """
     A simple test communication system where one agent broadcasts a message,
     and others print what they hear.
