@@ -28,10 +28,8 @@ class Base_Agent():
 
     @abstractmethod
     def think_and_send(self):
-        if self.world.robot.unum ==1:
-            self.communicator.broadcast()
-        else:
-           pass
+        pass
+        
 
     def hear_message(self, msg:bytearray, direction, timestamp:float) -> None:
         if direction != "self" and self.communicator is not None:
