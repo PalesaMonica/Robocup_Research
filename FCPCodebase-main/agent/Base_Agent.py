@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from behaviors.Behavior import Behavior
-from communication.test_comm import Communicate
+from communication.Communicator import Communicator
 from communication.Server_Comm import Server_Comm
 from communication.World_Parser import World_Parser
 from logs.Logger import Logger
@@ -22,7 +22,7 @@ class Base_Agent():
         self.inv_kinematics = Inverse_Kinematics(self.world.robot)
         self.behavior = Behavior(self)
         self.path_manager = Path_Manager(self.world)
-        self.communicator  = Communicate(self.world, self.scom.commit_announcement)
+        self.communicator  = Communicator(self.world, self.scom.commit_announcement)
         self.behavior.create_behaviors()
         Base_Agent.all_agents.append(self)
 

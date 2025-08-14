@@ -70,7 +70,7 @@ class Agent(Base_Agent):
                 behavior.execute("Zero_Bent_Knees") # wait
 
         #--------------------------------------- 2. Broadcast
-        self.radio.broadcast()
+        self.communicator.broadcast()
 
         #--------------------------------------- 3. Send to server
         self.scom.commit_and_send( r.get_command() )
