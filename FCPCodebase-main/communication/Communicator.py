@@ -6,22 +6,59 @@ class Communicator():
         self.commit_announcement = commit_announcement
         self.last_broadcast_time = 0
         self.broadcast_interval = 40 
+        self.world = world
         self.r = world.robot
-   
-    def can_send_message(self):
-        player_positions=[2,6,9]
-        if self.r.unum in player_positions:
+          
+
+    def can_seeball(self):
+        "returns True if the agent can see the ball"
+        if self.world.ball_is_visible:
+            return True
+        return False
+    
+    def get_ball_position(self):
+        "returns the ball position if the agent can see the ball"
+        if self.can_seeball():
+            return self.world.ball_abs_pos
+        return None
+
+
+    def broadcast_ball_condition(self):
+        "returns True if the agent can see the ball and is in a position to broadcast it"
+        ball_pos = self.get_ball_position()
+        player_list =[4,7,9,10]
+        x, y = ball_pos[0], ball_pos[1]  
+
+        if ball_pos is None:
+            return False
+        if -15 <= x <= 15 and -10 <= y <= 10:
+            return True
+        if self.r.unum in player_list:
             return True
         return False
 
+    def ball_position_to_message(self, ball_pos):
+        """Converts the ball position to a message string if the position is valid"""
+        if ball_pos is None:
+            return None
+        message_str = f"B:{ball_pos[0]:.1f},{ball_pos[1]:.1f}"
+        if len(message_str.encode("utf-8")) > 20:
+            return None  
+        return message_str
+
     def broadcast(self):
         current_time = self.world.time_local_ms
-        if self.can_send_message() and (current_time - self.last_broadcast_time >= self.broadcast_interval):
-            msg ="HelloWorld"
-            self.commit_announcement(msg.encode())
-            self.last_broadcast_time = current_time
-            print(f"[Agent {self.world.robot.unum}] Broadcasted: {msg}")
-    
+        if self.broadcast_ball_condition() and (current_time - self.last_broadcast_time >= self.broadcast_interval):
+            ball_pos = self.get_ball_position()
+            message_str = self.ball_position_to_message(ball_pos)
+            if message_str is not None: 
+                message_bytes = message_str.encode("utf-8")
+                self.commit_announcement(message_bytes)
+                print(f"Agent {self.world.robot.unum} broadcasted message: {message_str}")
+                self.last_broadcast_time = current_time
+            else:
+                print(f"Agent{self.world.robot.unum}: failed to create message")
+
     def receive(self, msg: bytearray):
         decoded = msg.decode("utf-8")
         print(f"Agent {self.world.robot.unum} received message: {decoded}")
