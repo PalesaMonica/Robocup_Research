@@ -1,4 +1,5 @@
 from world.World import World
+import numpy as np
 
 class Communicator():
     def __init__(self, world: World, commit_announcement) -> None:
@@ -7,8 +8,7 @@ class Communicator():
         self.last_broadcast_time = 0
         self.broadcast_interval = 40 
         self.world = world
-        self.r = world.robot
-          
+        self.r = world.robot    
 
     def can_seeball(self):
         "returns True if the agent can see the ball"
@@ -27,14 +27,12 @@ class Communicator():
         "returns True if the agent can see the ball and is in a position to broadcast it"
         ball_pos = self.get_ball_position()
         player_list =[4,7,9,10]
-        x, y = ball_pos[0], ball_pos[1]  
-
         if ball_pos is None:
             return False
-        if -15 <= x <= 15 and -10 <= y <= 10:
+        x, y = ball_pos[0], ball_pos[1] 
+        if -15 <= x <= 15 and -10 <= y <= 10 and  self.r.unum in player_list:
             return True
-        if self.r.unum in player_list:
-            return True
+       
         return False
 
     def ball_position_to_message(self, ball_pos):
@@ -45,7 +43,16 @@ class Communicator():
         if len(message_str.encode("utf-8")) > 20:
             return None  
         return message_str
-
+    
+    def calculate_confidence_score(self, ball_pos):
+        """calculate the confindence an agent has in the ball position they are broadcasting"""
+        agent_pos = self.r.loc_head_position  
+        distance = np.linalg.norm(ball_pos[:2] - agent_pos[:2])  
+        confidence = 1.0 /(distance + 1.0)  
+        if confidence < 0.1:
+            confidence = 0.1
+        return confidence
+    
     def broadcast(self):
         current_time = self.world.time_local_ms
         if self.broadcast_ball_condition() and (current_time - self.last_broadcast_time >= self.broadcast_interval):
@@ -54,7 +61,7 @@ class Communicator():
             if message_str is not None: 
                 message_bytes = message_str.encode("utf-8")
                 self.commit_announcement(message_bytes)
-                print(f"Agent {self.world.robot.unum} broadcasted message: {message_str}")
+                print(f"Agent {self.world.robot.unum} broadcasted message: {message_str} with confidence {self.calculate_confidence_score(ball_pos):.2f}")
                 self.last_broadcast_time = current_time
             else:
                 print(f"Agent{self.world.robot.unum}: failed to create message")

@@ -33,7 +33,6 @@ class Base_Agent():
 
     def hear_message(self, msg:bytearray, direction, timestamp:float) -> None:
         if direction != "self" and self.communicator is not None:
-            #self.radio.receive(msg)
             self.communicator.receive(msg)
 
     def terminate(self):
