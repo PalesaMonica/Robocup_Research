@@ -9,16 +9,27 @@ class Communicator():
         self.broadcast_interval = 40 
         self.world = world
         self.r = world.robot    
-
-    def can_seeball(self):
+    
+    @property
+    def can_see_ball(self):
         "returns True if the agent can see the ball"
         if self.world.ball_is_visible:
             return True
         return False
     
+    def is_ball_data_fresh(self, max_age_ms=50):
+        """returns True if the ball position data is fresh enough to be used"""
+        current_time = self.world.time_local_ms
+        age = current_time - self.world.ball_abs_pos_last_update
+        return age <= max_age_ms
+
+    def should_use_ball_position(self):
+        "returns True if the agent should use the ball position for broadcasting"
+        return (self.can_see_ball and self.r.loc_is_up_to_date) or (self.is_ball_data_fresh(max_age_ms=40))
+    
     def get_ball_position(self):
         "returns the ball position if the agent can see the ball"
-        if self.can_seeball():
+        if self.should_use_ball_position():
             return self.world.ball_abs_pos
         return None
 
@@ -61,12 +72,16 @@ class Communicator():
             if message_str is not None: 
                 message_bytes = message_str.encode("utf-8")
                 self.commit_announcement(message_bytes)
-                print(f"Agent {self.world.robot.unum} broadcasted message: {message_str} with confidence {self.calculate_confidence_score(ball_pos):.2f}")
+                pos_x, pos_y = self.r.loc_head_position[:2]
+                print(
+                    f"Agent {self.r.unum} broadcasted message from position ({pos_x:.1f}, {pos_y:.1f}): "
+                    f"{message_str} with confidence {self.calculate_confidence_score(ball_pos):.2f}"
+                )
                 self.last_broadcast_time = current_time
             else:
-                print(f"Agent{self.world.robot.unum}: failed to create message")
+                print(f"Agent{self.r.unum}: failed to create message")
 
     def receive(self, msg: bytearray):
         decoded = msg.decode("utf-8")
-        print(f"Agent {self.world.robot.unum} received message: {decoded}")
+        print(f"Agent {self.r.unum} received message: {decoded}")
         
