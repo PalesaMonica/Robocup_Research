@@ -36,6 +36,7 @@ class Communicator():
 
     def broadcast_ball_condition(self):
         "returns True if the agent can see the ball and is in a position to broadcast it"
+        #this is function is still going to be modified so that more conditions are added before round robin communication ordering
         ball_pos = self.get_ball_position()
         player_list =[4,7,9,10]
         if ball_pos is None:
