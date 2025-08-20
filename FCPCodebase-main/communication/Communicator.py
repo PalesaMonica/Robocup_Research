@@ -17,7 +17,7 @@ class Communicator():
             return True
         return False
     
-    def is_ball_data_fresh(self, max_age_ms=50):
+    def is_ball_data_fresh(self, max_age_ms=40):
         """returns True if the ball position data is fresh enough to be used"""
         current_time = self.world.time_local_ms
         age = current_time - self.world.ball_abs_pos_last_update
@@ -25,7 +25,7 @@ class Communicator():
 
     def should_use_ball_position(self):
         "returns True if the agent should use the ball position for broadcasting"
-        return (self.can_see_ball and self.r.loc_is_up_to_date) or (self.is_ball_data_fresh(max_age_ms=40))
+        return (self.can_see_ball and self.r.loc_is_up_to_date) and (self.is_ball_data_fresh(max_age_ms=40))
     
     def get_ball_position(self):
         "returns the ball position if the agent can see the ball"
