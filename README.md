@@ -8,7 +8,7 @@ This project explores **collaborative perception** in the RoboCup 3D Soccer Simu
 
 -  Multi-agent ball perception using agent-to-agent communication
 -  Voting system for consensus on ball location
--  Round-based communication strategy
+-  Round Robin-based communication strategy
 -  Integration with the RoboCup 3D Simulation environment
 -  Built on top of the [FCPCodebase](https://github.com/m-abr/FCPCodebase?tab=readme-ov-file)
 
