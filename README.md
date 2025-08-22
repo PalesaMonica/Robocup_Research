@@ -18,7 +18,7 @@ This project explores **collaborative perception** in the RoboCup 3D Soccer Simu
 
 
 
-#### Citation
+#### Reference
 
 @article{abreu2025designing,
   title={Designing a skilled soccer team for RoboCup: exploring skill-set-primitives through reinforcement learning},
