@@ -212,7 +212,7 @@ class Agent(Base_Agent):
 
         #--------------------------------------- 3. Broadcast
         self.communicator.broadcast()
-
+        
         #--------------------------------------- 4. Send to server
         if self.fat_proxy_cmd is None: # normal behavior
             self.scom.commit_and_send( r.get_command() )

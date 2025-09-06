@@ -430,23 +430,5 @@ class World():
         # update timestamp
         o.state_last_update = self.time_local_ms
 
-         # --- voting-related updates ---
-        ball_pos = self.ball_abs_pos
-        if o.is_visible and ball_pos is not None and o.state_abs_pos is not None:
-            vec_to_ball = ball_pos[:2] - o.state_abs_pos[:2]
-            distance = np.linalg.norm(vec_to_ball)
-
-            angle_to_ball = np.degrees(np.arctan2(vec_to_ball[1], vec_to_ball[0]))
-            facing_diff = abs((angle_to_ball - o.state_orientation + 180) % 360 - 180)
-
-            fov = 120 
-            o.can_see_ball = (distance < 15.0) and (facing_diff < fov / 2)
-
-            if o.can_see_ball:
-                o.ball_est_pos = ball_pos.copy()
-            else:
-                o.ball_est_pos = None
-        else:
-            o.can_see_ball = False
-            o.ball_est_pos = None
+        
 

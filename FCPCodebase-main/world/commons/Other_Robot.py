@@ -27,6 +27,3 @@ class Other_Robot():
         self.state_body_parts_abs_pos = dict() # 3D absolute position of each body part
         self.state_filtered_velocity = np.zeros(3) # 3D filtered velocity (m/s) (if the head is not visible, the 2D part is updated and v.z decays)
        
-      # ---voting variables---
-        self.can_see_ball = False  # True if this agent can currently see the ball
-        self.ball_est_pos = None
