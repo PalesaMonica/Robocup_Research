@@ -35,6 +35,7 @@ class Communicator:
         return self.world.ball_abs_pos if self.world.ball_is_visible else None
 
     def broadcast_ball_condition(self)-> bool:
+        """Check if ball is visible and within field boundaries"""
         ball_pos = self.get_ball_position()
         if ball_pos is None:
             return False
@@ -42,19 +43,22 @@ class Communicator:
         return -15 <= x <= 15 and -10 <= y <= 10
 
     def ball_position_to_message(self, ball_pos, confidence):
+        """Convert ball position to message string"""
         if ball_pos is None:
             return None
         message_str = f"B:{self.r.unum}:{ball_pos[0]:.1f},{ball_pos[1]:.1f},{confidence:.2f}"
-        return message_str if len(message_str.encode("utf-8")) <= 25 else None
+        return message_str if len(message_str.encode("utf-8")) <= 20 else None
 
     # ---------------- Voting group logic ----------------
     def calculate_confidence_score(self, ball_pos, player_pos):
+        '''Calculate confidence score based on distance to ball'''
         distance = np.linalg.norm(ball_pos[:2] - player_pos[:2])
         return max(1.0 / (distance + 1.0), 0.1)
 
     def get_current_communication_cycle(self):
         """Get the current communication cycle number"""
         return (self.world.time_local_ms // 40) // 11
+
     def last_agent_in_cycle(self):
         """Check if the last agent (1) has broadcasted in the current cycle"""
         return any(entry["sender"] == 1 for entry in self.voting_group_list)
@@ -101,16 +105,9 @@ class Communicator:
             if self.r.unum in agent_ids:
                 self.world.ball_is_visible = False
 
-    def turn_on_vision(self):
-        group = self.get_voting_group()
-        if group:
-            agent_ids = set(group.keys())
-            if self.r.unum in agent_ids:
-                self.world.ball_is_visible = True
-
-    def round_robin_communicator(self, now_ms: int) -> int:
+    def round_robin_communicator(self, current_time: int) -> int:
         """Return which agent ID owns the current slot"""
-        cycle_position = (now_ms // 40) % 11 
+        cycle_position = (current_time // 40) % 11 
         return 11 - cycle_position   
     
 
@@ -119,19 +116,7 @@ class Communicator:
         current_time = self.world.time_local_ms
         slot_owner  = self.round_robin_communicator(current_time) 
         return self.r.unum == slot_owner
-    
-    def is_cycle_complete(self):
-        """
-        Determines if the current broadcasting cycle is complete
-        based on the round-robin slot schedule.
-        """
-        current_time = self.world.time_local_ms
-        last_slot_owner = 1 
-        slot_owner = self.round_robin_communicator(current_time)
-    
-        return slot_owner == last_slot_owner
-
-        
+       
     def broadcast(self):
         """Broadcast ball info with confidence"""
         current_time = self.world.time_local_ms
@@ -153,10 +138,26 @@ class Communicator:
                         "ball_pos": ball_pos[:2],
                         "confidence": self.confidence
                     })
+                self.turn_off_vision  
+                 
+    def update_ball_weighted_average(self):
+        """Update world ball position using weighted average from voting group"""
+        if not self.voting_group_list:
+            return
+        total_confidence = sum(entry["confidence"] for entry in self.voting_group_list)
+        if total_confidence == 0:
+            return
+        weighted_x = sum(entry["ball_pos"][0] * entry["confidence"] for entry in self.voting_group_list)
+        weighted_y = sum(entry["ball_pos"][1] * entry["confidence"] for entry in self.voting_group_list)
+        avg_x = weighted_x / total_confidence
+        avg_y = weighted_y / total_confidence
+        self.world.ball_abs_pos = np.array([avg_x, avg_y, 0.0])
+        self.world.ball_abs_pos_last_update = self.world.time_local_ms
+        self.world.ball_is_visible = True
+        
 
     def receive(self, msg: bytearray):
         """Process a message delivered by the server"""
-
         self.check_and_handle_cycle_completion()
         
         decoded = msg.decode("utf-8")
@@ -180,6 +181,3 @@ class Communicator:
         #     f"[RECEIVE] t={self.world.time_local_ms} ms | Agent {self.r.unum} received from {sender_unum}"
         # )
     
-    def update_ball_weighted_average(self):
-        """Update world ball position based on highest confidence in voting group"""
-        pass
