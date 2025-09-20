@@ -25,10 +25,20 @@ class Communicator:
         self.last_reset_cycle = -1  
         self.cycle_completed = False 
         self.current_cycle = -1
+        self.players= 11
 
     # ---------------- Ball state helpers ----------------
     def is_ball_data_fresh(self, max_age_ms=40):
-        return (self.world.time_local_ms - self.world.ball_abs_pos_last_update) <= max_age_ms
+        """Check data freshness using local time (for consistent interval measurement)"""
+        return (self.get_local_time() - self.world.ball_abs_pos_last_update) <= max_age_ms
+
+    def get_server_time(self):
+        """server game time converted to milliseconds for synchronization between agents"""
+        return int(self.world.time_game * 1000)   
+    
+    def get_local_time(self):
+        """Use local simulation time for interval timing and local operations"""
+        return self.world.time_local_ms
 
     def get_ball_position(self):
         """Returns ball position if visible, else None"""
@@ -49,24 +59,20 @@ class Communicator:
         message_str = f"B:{self.r.unum}:{ball_pos[0]:.1f},{ball_pos[1]:.1f},{confidence:.2f}"
         return message_str if len(message_str.encode("utf-8")) <= 20 else None
 
-    # ---------------- Voting group logic ----------------
+    # ---------------- Voting logic ----------------
     def calculate_confidence_score(self, ball_pos, player_pos):
         '''Calculate confidence score based on distance to ball'''
         distance = np.linalg.norm(ball_pos[:2] - player_pos[:2])
         return max(1.0 / (distance + 1.0), 0.1)
 
     def get_current_communication_cycle(self):
-        """Get the current communication cycle number"""
-        return (self.world.time_local_ms // 40) // 11
-
-    def last_agent_in_cycle(self):
-        """Check if the last agent (1) has broadcasted in the current cycle"""
-        return any(entry["sender"] == 1 for entry in self.voting_group_list)
+        """Get the current communication cycle number using server time"""
+        return (self.get_server_time() // 40) // self.players
     
     def check_and_handle_cycle_completion(self):
         """Check if we've moved to a new cycle and handle completion of previous cycle"""
         new_cycle = self.get_current_communication_cycle()
-        if new_cycle != self.current_cycle and self.current_cycle != -1 or self.last_agent_in_cycle():
+        if new_cycle != self.current_cycle and self.current_cycle != -1:
             self.cycle_completed = True
             
         if self.cycle_completed:
@@ -75,23 +81,25 @@ class Communicator:
             
             self.voting_group_list = []
             self.cycle_completed = False
-            logging.info(f"[RESET] t={self.world.time_local_ms} ms | Agent {self.r.unum} | "
+            logging.info(f"[RESET] server_t={self.get_server_time()} local_t={self.get_local_time()} ms | Agent {self.r.unum} | "
                         f"Voting list reset for cycle {new_cycle}")
         
         self.current_cycle = new_cycle
-    
 
+    def add_to_voting_group(self, sender_id):
+        """Single source of truth for adding entries to voting list"""
+        # Check if sender already exists in current cycle
+        if not any(entry["sender"] == sender_id for entry in self.voting_group_list):
+            entry = {"sender": sender_id}
+            self.voting_group_list.append(entry)
+          
+       
     def update_local_voting_group(self):
         """Add own ball info to voting list if visible"""
         self.check_and_handle_cycle_completion()
         
-        if self.world.ball_is_visible and self.world.ball_abs_pos is not None:
-            entry = {
-                "sender": self.r.unum,
-                "ball_pos": self.world.ball_abs_pos[:2],
-                "confidence": self.confidence
-            }
-            self.voting_group_list.append(entry)
+        if self.broadcast_ball_condition():
+            self.add_to_voting_group(self.r.unum)
         
         return self.voting_group_list
 
@@ -105,40 +113,39 @@ class Communicator:
             if self.r.unum in agent_ids:
                 self.world.ball_is_visible = False
 
+#----------------------------Communication Logic----------------------------
     def round_robin_communicator(self, current_time: int) -> int:
         """Return which agent ID owns the current slot"""
-        cycle_position = (current_time // 40) % 11 
-        return 11 - cycle_position   
+        cycle_position = (current_time // 40) % self.players
+        return self.players - cycle_position   
     
-
-    def should_broadcast(self)-> bool:
-        """Checks if the current agent should broadcast"""
-        current_time = self.world.time_local_ms
-        slot_owner  = self.round_robin_communicator(current_time) 
+    def should_broadcast_at_time(self, server_time: int) -> bool:
+        """Checks if the current agent should broadcast using server time for synchronization"""
+        slot_owner = self.round_robin_communicator(server_time) 
         return self.r.unum == slot_owner
+       
+    def should_broadcast(self)-> bool:
+        """Checks if the current agent should broadcast using server time"""
+        return self.should_broadcast_at_time(self.get_server_time())
        
     def broadcast(self):
         """Broadcast ball info with confidence"""
-        current_time = self.world.time_local_ms
+        server_time = self.get_server_time()  
+        local_time = self.get_local_time()    
         
         self.check_and_handle_cycle_completion()
         
-        if self.should_broadcast() and current_time - self.last_broadcast_time >= self.broadcast_interval:
+        if self.should_broadcast_at_time(server_time) and local_time - self.last_broadcast_time >= self.broadcast_interval:
             if self.broadcast_ball_condition():
                 self.confidence = self.calculate_confidence_score(self.world.ball_abs_pos, self.r.loc_head_position)
                 ball_pos = self.get_ball_position()
                 message_str = self.ball_position_to_message(ball_pos, self.confidence)
                 if message_str:
                     self.commit_announcement(message_str.encode("utf-8"))
-                   # logging.info(f"[BROADCAST] t={current_time} ms | Agent {self.r.unum} broadcast → {message_str}")
-                    self.last_broadcast_time = current_time
-            
-                    self.voting_group_list.append({
-                        "sender": self.r.unum,
-                        "ball_pos": ball_pos[:2],
-                        "confidence": self.confidence
-                    })
-                self.turn_off_vision  
+                    #logging.info(f"[BROADCAST] server_t={server_time} local_t={local_time} ms | Agent {self.r.unum} broadcast → {message_str}")
+                    self.last_broadcast_time = local_time 
+
+                    self.add_to_voting_group(self.r.unum)
                  
     def update_ball_weighted_average(self):
         """Update world ball position using weighted average from voting group"""
@@ -152,9 +159,8 @@ class Communicator:
         avg_x = weighted_x / total_confidence
         avg_y = weighted_y / total_confidence
         self.world.ball_abs_pos = np.array([avg_x, avg_y, 0.0])
-        self.world.ball_abs_pos_last_update = self.world.time_local_ms
+        self.world.ball_abs_pos_last_update = self.get_local_time() 
         self.world.ball_is_visible = True
-        
 
     def receive(self, msg: bytearray):
         """Process a message delivered by the server"""
@@ -162,22 +168,17 @@ class Communicator:
         
         decoded = msg.decode("utf-8")
         parts = decoded.split(":")
-        if len(parts) != 3 or parts[0] != "B":
-            return
+        # if len(parts) != 3 or parts[0] != "B":
+        #     return
 
         sender_unum = int(parts[1])
-        coords_conf = list(map(float, parts[2].split(",")))
-        ball_coords = tuple(coords_conf[:2])
-        confidence = coords_conf[2]
+        # coords_conf = list(map(float, parts[2].split(",")))
+        # ball_coords = tuple(coords_conf[:2])
+        # confidence = coords_conf[2]
 
-        entry = {
-            "sender": sender_unum,
-            "ball_pos": ball_coords,
-            "confidence": confidence
-        }
+        # Use single source of truth for adding to voting list
+        self.add_to_voting_group(sender_unum)
     
-        self.voting_group_list.append(entry)
         # logging.info(
-        #     f"[RECEIVE] t={self.world.time_local_ms} ms | Agent {self.r.unum} received from {sender_unum}"
+        #     f"[RECEIVE] server_t={self.get_server_time()} local_t={self.get_local_time()} ms | Agent {self.r.unum} received from {sender_unum}"
         # )
-    
