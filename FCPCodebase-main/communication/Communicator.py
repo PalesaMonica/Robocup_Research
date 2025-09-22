@@ -10,6 +10,7 @@ logging.basicConfig(
         logging.StreamHandler()
     ]
 )
+np.set_printoptions(precision=2, suppress=True, floatmode="fixed")
 
 class Communicator:
     def __init__(self, world: World, commit_announcement) -> None:
@@ -20,12 +21,12 @@ class Communicator:
         self.broadcast_interval = 40   # ms
         self.r = world.robot
         self.voting_group_list = []
-        self.teammate=world.teammates
+        self.teammate = world.teammates
         self.confidence = 0.0
         self.last_reset_cycle = -1  
         self.cycle_completed = False 
         self.current_cycle = -1
-        self.players= 11
+        self.players = 11
 
     # ---------------- Ball state helpers ----------------
     def is_ball_data_fresh(self, max_age_ms=40):
@@ -42,9 +43,9 @@ class Communicator:
 
     def get_ball_position(self):
         """Returns ball position if visible, else None"""
-        return self.world.ball_abs_pos if self.world.ball_is_visible else None
+        return self.world.ball_abs_pos[:2] if self.world.ball_is_visible else None
 
-    def broadcast_ball_condition(self)-> bool:
+    def broadcast_ball_condition(self) -> bool:
         """Check if ball is visible and within field boundaries"""
         ball_pos = self.get_ball_position()
         if ball_pos is None:
@@ -53,15 +54,32 @@ class Communicator:
         return -15 <= x <= 15 and -10 <= y <= 10
 
     def ball_position_to_message(self, ball_pos, confidence):
-        """Convert ball position to message string"""
+        """Convert ball position to safe message string"""
         if ball_pos is None:
             return None
-        message_str = f"B:{self.r.unum}:{ball_pos[0]:.1f},{ball_pos[1]:.1f},{confidence:.2f}"
-        return message_str if len(message_str.encode("utf-8")) <= 20 else None
+
+        unum = self.r.unum
+        x = round(float(ball_pos[0]), 2)
+        y = round(float(ball_pos[1]), 2)
+        c = int(confidence * 100)  
+
+        message_str = f"A{unum}:{x},{y},{c}"
+
+        # Safety: enforce constraints
+        if len(message_str) > 20:
+            return None
+        if any(ch in message_str for ch in [' ', '(', ')', '"', "'", '\\']):
+            return None
+        if message_str.startswith(";"):
+            return None
+
+        return message_str
 
     # ---------------- Voting logic ----------------
     def calculate_confidence_score(self, ball_pos, player_pos):
-        '''Calculate confidence score based on distance to ball'''
+        """Calculate confidence score based on distance to ball"""
+        ball_pos = np.array(ball_pos, dtype=float)
+        player_pos = np.array(player_pos, dtype=float)
         distance = np.linalg.norm(ball_pos[:2] - player_pos[:2])
         return max(1.0 / (distance + 1.0), 0.1)
 
@@ -72,48 +90,55 @@ class Communicator:
     def check_and_handle_cycle_completion(self):
         """Check if we've moved to a new cycle and handle completion of previous cycle"""
         new_cycle = self.get_current_communication_cycle()
-        if new_cycle != self.current_cycle and self.current_cycle != -1:
-            self.cycle_completed = True
-            
-        if self.cycle_completed:
-            logging.info(f"[CYCLE_COMPLETE] Agent {self.r.unum} | Cycle {self.current_cycle} | "
-                        f"Voting list: {self.voting_group_list}")
-            
-            self.voting_group_list = []
-            self.cycle_completed = False
-            logging.info(f"[RESET] server_t={self.get_server_time()} local_t={self.get_local_time()} ms | Agent {self.r.unum} | "
-                        f"Voting list reset for cycle {new_cycle}")
         
-        self.current_cycle = new_cycle
+        # Only process cycle completion once per cycle transition
+        if new_cycle != self.current_cycle:
+            if self.current_cycle != -1:  # Don't log for initial cycle
+                logging.info(f"[CYCLE_COMPLETE] Agent {self.r.unum} | Cycle {self.current_cycle} | "
+                            f"Server time: {self.get_server_time()} | "
+                            f"Voting list: {self.voting_group_list}")
+                # Update ball position based on voting results
+                self.update_ball_weighted_average()
+                # Reset voting list for new cycle
+                self.voting_group_list = []
+                
+                logging.info(f"[RESET] server_t={self.get_server_time()} local_t={self.get_local_time()} ms | "
+                           f"Agent {self.r.unum} | Voting list reset for cycle {new_cycle}")
+            
+            self.current_cycle = new_cycle
 
-    def add_to_voting_group(self, sender_id):
+    def add_to_voting_group(self, sender_id, ball_pos, confidence):
         """Single source of truth for adding entries to voting list"""
-        # Check if sender already exists in current cycle
+        ball_array = np.round(np.array([
+            float(ball_pos[0]),
+            float(ball_pos[1])
+        ], dtype=float), 2)
+
+        confidence = round(float(confidence), 2)
         if not any(entry["sender"] == sender_id for entry in self.voting_group_list):
-            entry = {"sender": sender_id}
+            entry = {
+                "sender": sender_id,
+                "ball_pos": ball_array,
+                "confidence": confidence
+            }
             self.voting_group_list.append(entry)
-          
+
        
     def update_local_voting_group(self):
         """Add own ball info to voting list if visible"""
         self.check_and_handle_cycle_completion()
         
         if self.broadcast_ball_condition():
-            self.add_to_voting_group(self.r.unum)
+            ball_pos = self.get_ball_position()
+            self.confidence = self.calculate_confidence_score(ball_pos, self.r.loc_head_position)
+            self.add_to_voting_group(self.r.unum, ball_pos, self.confidence)
         
         return self.voting_group_list
 
     def get_voting_group(self):
         return self.voting_group_list
 
-    def turn_off_vision(self):
-        group = self.get_voting_group()
-        if group:
-            agent_ids = set(group.keys())
-            if self.r.unum in agent_ids:
-                self.world.ball_is_visible = False
-
-#----------------------------Communication Logic----------------------------
+    # ----------------------------Communication Logic----------------------------
     def round_robin_communicator(self, current_time: int) -> int:
         """Return which agent ID owns the current slot"""
         cycle_position = (current_time // 40) % self.players
@@ -124,7 +149,7 @@ class Communicator:
         slot_owner = self.round_robin_communicator(server_time) 
         return self.r.unum == slot_owner
        
-    def should_broadcast(self)-> bool:
+    def should_broadcast(self) -> bool:
         """Checks if the current agent should broadcast using server time"""
         return self.should_broadcast_at_time(self.get_server_time())
        
@@ -140,45 +165,50 @@ class Communicator:
                 self.confidence = self.calculate_confidence_score(self.world.ball_abs_pos, self.r.loc_head_position)
                 ball_pos = self.get_ball_position()
                 message_str = self.ball_position_to_message(ball_pos, self.confidence)
-                if message_str:
+                if message_str :
                     self.commit_announcement(message_str.encode("utf-8"))
-                    #logging.info(f"[BROADCAST] server_t={server_time} local_t={local_time} ms | Agent {self.r.unum} broadcast → {message_str}")
                     self.last_broadcast_time = local_time 
 
-                    self.add_to_voting_group(self.r.unum)
+                    self.add_to_voting_group(self.r.unum, ball_pos, self.confidence)
                  
     def update_ball_weighted_average(self):
         """Update world ball position using weighted average from voting group"""
         if not self.voting_group_list:
             return
+            
         total_confidence = sum(entry["confidence"] for entry in self.voting_group_list)
         if total_confidence == 0:
             return
+            
         weighted_x = sum(entry["ball_pos"][0] * entry["confidence"] for entry in self.voting_group_list)
         weighted_y = sum(entry["ball_pos"][1] * entry["confidence"] for entry in self.voting_group_list)
+        
         avg_x = weighted_x / total_confidence
         avg_y = weighted_y / total_confidence
+        
         self.world.ball_abs_pos = np.array([avg_x, avg_y, 0.0])
         self.world.ball_abs_pos_last_update = self.get_local_time() 
-        self.world.ball_is_visible = True
+        self.world.is_ball_abs_pos_from_vision = False  
+
+        logging.info(f"[BALL_UPDATE] Agent {self.r.unum} | New ball pos: {self.world.ball_abs_pos[:2]}")
 
     def receive(self, msg: bytearray):
         """Process a message delivered by the server"""
         self.check_and_handle_cycle_completion()
         
-        decoded = msg.decode("utf-8")
-        parts = decoded.split(":")
-        # if len(parts) != 3 or parts[0] != "B":
-        #     return
+        try:
+            decoded = msg.decode("utf-8")
+            if not decoded.startswith("A"):
+                return
+            
+            header, coords = decoded[1:].split(":", 1)
+            sender_unum = int(header)
 
-        sender_unum = int(parts[1])
-        # coords_conf = list(map(float, parts[2].split(",")))
-        # ball_coords = tuple(coords_conf[:2])
-        # confidence = coords_conf[2]
+            x_str, y_str, c_str = coords.split(",")
+            ball_coords = np.array([float(x_str), float(y_str)], dtype=float)
+            confidence = float(c_str) / 100.0  
 
-        # Use single source of truth for adding to voting list
-        self.add_to_voting_group(sender_unum)
-    
-        # logging.info(
-        #     f"[RECEIVE] server_t={self.get_server_time()} local_t={self.get_local_time()} ms | Agent {self.r.unum} received from {sender_unum}"
-        # )
+            self.add_to_voting_group(sender_unum, ball_coords, confidence)
+
+        except Exception as e:
+            logging.warning(f"[RECEIVE_ERROR] Agent {self.r.unum} failed to parse message: {decoded} | {e}")

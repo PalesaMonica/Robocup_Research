@@ -80,7 +80,7 @@ class World():
         self.ball_abs_vel = np.zeros(3)          # Ball velocity vector based on the last 2 known values of self.ball_abs_pos (m/s) (Warning: noisy if ball is distant, use instead get_ball_abs_vel)
         self.ball_abs_speed = 0                  # Ball scalar speed based on the last 2 known values of self.ball_abs_pos (m/s)    (Warning: noisy if ball is distant, use instead ||get_ball_abs_vel||)
         self.ball_is_visible = False             # True if the last server message contained vision information related to the ball
-        self.is_ball_abs_pos_from_vision = False # True if ball_abs_pos originated from vision, False if it originated from radio
+        self.is_ball_abs_pos_from_vision = False # True if ball_abs_pos originated from vision, False if it originated from voting
         self.ball_last_seen = 0                  # World.time_local_ms when ball was last seen (note: may be different from self.ball_abs_pos_last_update)
         self.ball_cheat_abs_pos = np.zeros(3)    # Absolute ball position provided by the server as cheat (m)
         self.ball_cheat_abs_vel = np.zeros(3)    # Absolute velocity vector based on the last 2 values of self.ball_cheat_abs_pos (m/s)
