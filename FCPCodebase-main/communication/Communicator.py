@@ -97,7 +97,7 @@ class Communicator:
 
     def get_current_communication_cycle(self):
         try:
-            return (self.get_server_time() // 40) // self.players
+            return self.get_server_time() // (self.players * self.broadcast_interval)
         except (ZeroDivisionError, TypeError):
             return 0
     
@@ -114,6 +114,7 @@ class Communicator:
                 self.voting_group_list = []
                 self.logger.info(f"[RESET] Voting list reset for cycle {new_cycle}")
             self.current_cycle = new_cycle
+            self.broadcasted_this_cycle = False
 
     def add_to_voting_group(self, sender_id, ball_pos, confidence):
         try:
@@ -129,15 +130,10 @@ class Communicator:
         except (ValueError, TypeError, IndexError) as e:
             self.logger.warning(f"[VOTING_ERROR] Failed to add to voting group: {e}")
 
-    def get_voting_group(self):
-        return self.voting_group_list
-
     # ---------------- Communication Logic ----------------
     def round_robin_communicator(self, current_time: int) -> int:
         try:
-            if (current_time // 20) % 2 != 0:
-                return 0  
-            cycle_position = (current_time // 40) % self.players
+            cycle_position = (current_time // self.broadcast_interval) % self.players
             return cycle_position + 1  
         except (ZeroDivisionError, TypeError):
             return 0
@@ -154,9 +150,12 @@ class Communicator:
             server_time = self.get_server_time()  
             local_time = self.get_local_time()    
             self.check_and_handle_cycle_completion()
-            
+           
             if (self.should_broadcast_at_time(server_time) and 
                 local_time - self.last_broadcast_time >= self.broadcast_interval):
+                if self.broadcasted_this_cycle:
+                    return
+        
                 if self.broadcast_ball_condition():
                     ball_pos = self.get_ball_position()
                     if ball_pos is not None:
@@ -169,6 +168,7 @@ class Communicator:
                             self.message_sent_count += 1
                             self.add_to_voting_group(self.r.unum, ball_pos, self.confidence)
                             self.last_broadcast_time = local_time 
+                            self.broadcasted_this_cycle = True
         except Exception as e:
             self.logger.error(f"[BROADCAST_ERROR] Agent {getattr(self.r, 'unum', 'unknown')} | {e}")
                     
@@ -207,7 +207,6 @@ class Communicator:
     def receive(self, msg: bytearray):
         self.check_and_handle_cycle_completion()
         decoded = msg.decode("utf-8")
-        self.message_received_count += 1
         if not decoded.startswith("A"):
             return
         try:
@@ -225,6 +224,8 @@ class Communicator:
             x_str, y_str, c_str = coord_parts
             ball_coords = np.array([float(x_str), float(y_str)], dtype=float)
             confidence = float(c_str)
+            self.message_received_count += 1
             self.add_to_voting_group(sender_unum, ball_coords, confidence)
+            
         except (ValueError, TypeError) as e:
             self.logger.warning(f"[RECEIVE_ERROR] Failed to process message '{decoded}': {e}")
