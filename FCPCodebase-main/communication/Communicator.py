@@ -171,35 +171,47 @@ class Communicator:
                             self.broadcasted_this_cycle = True
         except Exception as e:
             self.logger.error(f"[BROADCAST_ERROR] Agent {getattr(self.r, 'unum', 'unknown')} | {e}")
-                    
+
     def update_ball_weighted_average(self):
         if not self.voting_group_list:
             return
         try:
             group_sorted = sorted(self.voting_group_list, key=lambda e: e["sender"])
-            total_confidence = math.fsum(entry["confidence"] for entry in group_sorted)
+
+            power = 2.0
+            total_confidence = math.fsum(entry["confidence"] ** power for entry in group_sorted)
             if total_confidence == 0:
                 return
 
-            power = 2.0 
-            total_confidence = math.fsum(entry["confidence"]**power for entry in group_sorted)
-            weighted_x = math.fsum(entry["ball_pos"][0] * (entry["confidence"]**power) for entry in group_sorted)
-            weighted_y = math.fsum(entry["ball_pos"][1] * (entry["confidence"]**power) for entry in group_sorted)
+            weighted_x = math.fsum(entry["ball_pos"][0] * (entry["confidence"] ** power) for entry in group_sorted)
+            weighted_y = math.fsum(entry["ball_pos"][1] * (entry["confidence"] ** power) for entry in group_sorted)
             avg_x = weighted_x / total_confidence
             avg_y = weighted_y / total_confidence
 
-
-            prev_ball_pos = self.world.ball_abs_pos.copy()
-            prev_from_vision = self.world.is_ball_abs_pos_from_vision
+            prev_ball_pos = None
+            for entry in group_sorted:
+                if entry["sender"] == self.r.unum:
+                    prev_ball_pos = entry["ball_pos"]
+                    break
 
             self.world.ball_abs_pos = np.array([avg_x, avg_y, 0.0])
             self.world.ball_abs_pos_last_update = self.get_local_time()
             self.world.is_ball_abs_pos_from_vision = False
 
+            # Calculate difference between vision and estimated position
+            if prev_ball_pos is not None:
+                diff_x = avg_x - prev_ball_pos[0]
+                diff_y = avg_y - prev_ball_pos[1]
+                distance = math.sqrt(diff_x ** 2 + diff_y ** 2)
+                diff_str = f"Diff=[{diff_x:.2f}, {diff_y:.2f}] ({distance:.2f}m)"
+            else:
+                diff_str = "Diff=N/A"
+
             self.logger.info(
                 f"[BALL_UPDATE] Agent {self.r.unum} | "
-                f"Vision Ball={(round(prev_ball_pos[0],2), round(prev_ball_pos[1],2)) if prev_from_vision else 'N/A'} | "
-                f"Estimated Ball=[{avg_x:.2f}, {avg_y:.2f}]"
+                f"Vision Ball={f'({round(prev_ball_pos[0], 2)}, {round(prev_ball_pos[1], 2)})' if prev_ball_pos is not None else 'N/A'} | "
+                f"Estimated Ball=[{avg_x:.2f}, {avg_y:.2f}] | "
+                f"{diff_str}"
             )
         except Exception as e:
             self.logger.error(f"[BALL_UPDATE_ERROR] Agent {getattr(self.r, 'unum', 'unknown')} | {e}")
