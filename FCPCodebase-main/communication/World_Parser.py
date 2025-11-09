@@ -95,8 +95,7 @@ class World_Parser():
         start += 1
         end = self.find_char(start, ord(" ")) 
         return self.exp[start:end], end, min_depth
-
-
+     
     def parse(self, exp):
 
         self.exp = exp #used by other member functions
@@ -318,8 +317,16 @@ class World_Parser():
                         self.world.ball_rel_head_sph_pos[1], end = self.read_float(end+1)
                         self.world.ball_rel_head_sph_pos[2], end = self.read_float(end+1)
                         self.world.ball_rel_head_cart_pos = M.deg_sph2cart(self.world.ball_rel_head_sph_pos)
-                        self.world.ball_is_visible = True
-                        self.world.ball_last_seen = self.world.time_local_ms
+
+                        distance = np.linalg.norm(self.world.ball_rel_head_cart_pos)
+                        if distance > self.world.MAX_BALL_DISTANCE:    # maximum distance at which the ball is considered visible (m)
+                            # Disable vision
+                            self.world.ball_is_visible = False
+                        else:
+                            # Enable vision
+                            self.world.ball_is_visible = True
+                            self.world.ball_last_seen = self.world.time_local_ms
+
 
                     elif tag==b'mypos':
 

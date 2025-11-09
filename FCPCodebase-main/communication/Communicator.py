@@ -25,6 +25,7 @@ class Communicator:
         self.message_sent_count = 0
         self.message_received_count = 0
 
+       
         # ------------------ Logging setup per agent ------------------
         log_dir = "agent_logs"
         os.makedirs(log_dir, exist_ok=True)
@@ -49,15 +50,19 @@ class Communicator:
 
     # ---------------- Ball state helpers ----------------
     def get_server_time(self):
+        ''' Returns the current server time in milliseconds. '''
         return int(self.world.time_game * 1000)   
     
     def get_local_time(self):
+        ''' Returns the local time in milliseconds. '''
         return self.world.time_local_ms
 
     def get_ball_position(self):
+        ''' Returns the absolute ball position if visible, else None. '''
         return self.world.ball_abs_pos[:2] if self.world.ball_is_visible else None
 
     def broadcast_ball_condition(self) -> bool:
+        ''' Determines if the ball position should be broadcasted. '''
         ball_pos = self.get_ball_position()
         if ball_pos is None:
             return False
@@ -65,6 +70,7 @@ class Communicator:
         return -15 <= x <= 15 and -10 <= y <= 10
 
     def ball_position_to_message(self, ball_pos, confidence):
+        ''' Converts ball position and confidence to a formatted message string. '''
         if ball_pos is None:
             return None
         try:
@@ -87,6 +93,7 @@ class Communicator:
 
     # ---------------- Voting logic ----------------
     def calculate_confidence_score(self, ball_pos, player_pos):
+        ''' Calculates confidence score based on distance between ball and player. '''
         try:
             ball_pos = np.array(ball_pos, dtype=float)
             player_pos = np.array(player_pos, dtype=float)
@@ -96,12 +103,14 @@ class Communicator:
             return 0.1
 
     def get_current_communication_cycle(self):
+        ''' Determines the current communication cycle based on server time. '''
         try:
             return self.get_server_time() // (self.players * self.broadcast_interval)
         except (ZeroDivisionError, TypeError):
             return 0
     
     def check_and_handle_cycle_completion(self):
+        ''' Checks if a communication cycle has completed and handles resets. '''
         new_cycle = self.get_current_communication_cycle()
         if new_cycle != self.current_cycle:
             if self.current_cycle != -1:
@@ -115,8 +124,11 @@ class Communicator:
                 self.logger.info(f"[RESET] Voting list reset for cycle {new_cycle}")
             self.current_cycle = new_cycle
             self.broadcasted_this_cycle = False
+            self.message_sent_count = 0
+            self.message_received_count = 0
 
     def add_to_voting_group(self, sender_id, ball_pos, confidence):
+        ''' Adds a ball position and confidence from a sender to the voting group. '''
         try:
             if ball_pos is None or len(ball_pos) < 2:
                 return
@@ -132,13 +144,16 @@ class Communicator:
 
     # ---------------- Communication Logic ----------------
     def round_robin_communicator(self, current_time: int) -> int:
+        ''' Determines which player should broadcast at the given time. '''
         try:
+            # Shift by half-interval to avoid boundary overlap
             cycle_position = (current_time // self.broadcast_interval) % self.players
-            return cycle_position + 1  
+            return self.players - cycle_position
         except (ZeroDivisionError, TypeError):
             return 0
 
     def should_broadcast_at_time(self, server_time: int) -> bool:
+        ''' Checks if this agent should broadcast at the current server time. '''
         try:
             slot_owner = self.round_robin_communicator(server_time) 
             return self.r.unum == slot_owner
@@ -146,6 +161,7 @@ class Communicator:
             return False
        
     def broadcast(self):
+        ''' Broadcasts the ball position if conditions are met. '''
         try:
             server_time = self.get_server_time()  
             local_time = self.get_local_time()    
@@ -172,7 +188,19 @@ class Communicator:
         except Exception as e:
             self.logger.error(f"[BROADCAST_ERROR] Agent {getattr(self.r, 'unum', 'unknown')} | {e}")
 
+    def validate_ball_estimated(self, ball_pos):
+        """This is to validate that the estimated ball position is within the field boundaries."""
+        field_x_min, field_x_max = -15.0, 15.0
+        field_y_min, field_y_max = -10.0, 10.0
+        try:
+            ball_x = float(ball_pos[0])
+            ball_y = float(ball_pos[1])
+            return field_x_min <= ball_x <= field_x_max and field_y_min <= ball_y <= field_y_max
+        except (ValueError, TypeError, IndexError):
+            return False
+
     def update_ball_weighted_average(self):
+        ''' Updates the ball position using a weighted average from voting group. '''
         if not self.voting_group_list:
             return
         try:
@@ -188,35 +216,45 @@ class Communicator:
             avg_x = weighted_x / total_confidence
             avg_y = weighted_y / total_confidence
 
+            # Validate before updating
+            if not self.validate_ball_estimated([avg_x, avg_y]):
+                self.logger.warning(
+                    f"[BALL_UPDATE_INVALID] Agent {self.r.unum} | "
+                    f"Estimated Ball=[{avg_x:.2f}, {avg_y:.2f}] is out of bounds."
+                )
+                return
+
+            # Find previous ball position sent by this agent
             prev_ball_pos = None
             for entry in group_sorted:
                 if entry["sender"] == self.r.unum:
                     prev_ball_pos = entry["ball_pos"]
                     break
 
-            self.world.ball_abs_pos = np.array([avg_x, avg_y, 0.0])
-            self.world.ball_abs_pos_last_update = self.get_local_time()
-            self.world.is_ball_abs_pos_from_vision = False
+            # Get actual ball position from vision if available
+            actual_ball_pos = None
+            if self.world.ball_is_visible:
+                actual_ball_pos = self.world.ball_abs_pos[:2]
 
-            # Calculate difference between vision and estimated position
-            if prev_ball_pos is not None:
-                diff_x = avg_x - prev_ball_pos[0]
-                diff_y = avg_y - prev_ball_pos[1]
-                distance = math.sqrt(diff_x ** 2 + diff_y ** 2)
-                diff_str = f"Diff=[{diff_x:.2f}, {diff_y:.2f}] ({distance:.2f}m)"
-            else:
-                diff_str = "Diff=N/A"
+            if not self.world.ball_is_visible:
+                # Only update if ball is not visible
+                self.world.ball_abs_pos = np.array([avg_x, avg_y, 0.0])
+                self.world.ball_abs_pos_last_update = self.get_local_time()
+                self.world.is_ball_abs_pos_from_vision = False
 
+            agent_position = self.r.loc_head_position[:2]
             self.logger.info(
                 f"[BALL_UPDATE] Agent {self.r.unum} | "
-                f"Vision Ball={f'({round(prev_ball_pos[0], 2)}, {round(prev_ball_pos[1], 2)})' if prev_ball_pos is not None else 'N/A'} | "
-                f"Estimated Ball=[{avg_x:.2f}, {avg_y:.2f}] | "
-                f"{diff_str}"
+                f"Sent ball={f'({round(prev_ball_pos[0], 2)}, {round(prev_ball_pos[1], 2)})' if prev_ball_pos is not None else 'N/A'} | "
+                f"Vision Ball={f'({round(actual_ball_pos[0], 2)}, {round(actual_ball_pos[1], 2)})' if actual_ball_pos is not None else 'N/A'} | "
+                f"Estimated Ball=[{avg_x:.2f}, {avg_y:.2f}] "
+                f"Agent Pos=({round(agent_position[0], 2)}, {round(agent_position[1], 2)})"
             )
         except Exception as e:
             self.logger.error(f"[BALL_UPDATE_ERROR] Agent {getattr(self.r, 'unum', 'unknown')} | {e}")
 
     def receive(self, msg: bytearray):
+        ''' Processes a received message containing ball position data. '''
         self.check_and_handle_cycle_completion()
         decoded = msg.decode("utf-8")
         if not decoded.startswith("A"):

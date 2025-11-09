@@ -1,279 +1,180 @@
-2025-10-14 08:02:19,657 [CYCLE_COMPLETE] Cycle 0 | Messages Sent: 1 | Messages Received: 7
-2025-10-14 08:02:19,657 [BALL_UPDATE] Agent 7 | Vision Ball=(0.01, 0.0) | Estimated Ball=[0.00, 0.00] | Diff=[-0.01, 0.00] (0.01m)
-2025-10-14 08:02:19,657 [RESET] Voting list reset for cycle 1
-2025-10-14 08:02:20,646 [CYCLE_COMPLETE] Cycle 1 | Messages Sent: 2 | Messages Received: 14
-2025-10-14 08:02:20,647 [BALL_UPDATE] Agent 7 | Vision Ball=(0.02, 0.01) | Estimated Ball=[-0.00, 0.00] | Diff=[-0.02, -0.01] (0.02m)
-2025-10-14 08:02:20,647 [RESET] Voting list reset for cycle 2
-2025-10-14 08:02:21,374 [CYCLE_COMPLETE] Cycle 2 | Messages Sent: 3 | Messages Received: 20
-2025-10-14 08:02:21,375 [BALL_UPDATE] Agent 7 | Vision Ball=(0.02, -0.01) | Estimated Ball=[0.01, 0.01] | Diff=[-0.01, 0.02] (0.02m)
-2025-10-14 08:02:21,375 [RESET] Voting list reset for cycle 3
-2025-10-14 08:02:21,988 [CYCLE_COMPLETE] Cycle 3 | Messages Sent: 3 | Messages Received: 29
-2025-10-14 08:02:21,988 [BALL_UPDATE] Agent 7 | Vision Ball=N/A | Estimated Ball=[-0.01, 0.00] | Diff=N/A
-2025-10-14 08:02:21,989 [RESET] Voting list reset for cycle 4
-2025-10-14 08:02:22,636 [CYCLE_COMPLETE] Cycle 4 | Messages Sent: 3 | Messages Received: 38
-2025-10-14 08:02:22,636 [BALL_UPDATE] Agent 7 | Vision Ball=N/A | Estimated Ball=[0.01, 0.00] | Diff=N/A
-2025-10-14 08:02:22,636 [RESET] Voting list reset for cycle 5
-2025-10-14 08:02:23,333 [CYCLE_COMPLETE] Cycle 5 | Messages Sent: 3 | Messages Received: 46
-2025-10-14 08:02:23,333 [BALL_UPDATE] Agent 7 | Vision Ball=N/A | Estimated Ball=[0.00, -0.00] | Diff=N/A
-2025-10-14 08:02:23,333 [RESET] Voting list reset for cycle 6
-2025-10-14 08:02:24,405 [CYCLE_COMPLETE] Cycle 6 | Messages Sent: 3 | Messages Received: 55
-2025-10-14 08:02:24,418 [BALL_UPDATE] Agent 7 | Vision Ball=N/A | Estimated Ball=[-0.00, -0.00] | Diff=N/A
-2025-10-14 08:02:24,419 [RESET] Voting list reset for cycle 7
-2025-10-14 08:02:25,764 [CYCLE_COMPLETE] Cycle 7 | Messages Sent: 4 | Messages Received: 63
-2025-10-14 08:02:25,764 [BALL_UPDATE] Agent 7 | Vision Ball=(0.02, 0.01) | Estimated Ball=[0.00, -0.00] | Diff=[-0.02, -0.01] (0.02m)
-2025-10-14 08:02:25,765 [RESET] Voting list reset for cycle 8
-2025-10-14 08:02:26,555 [CYCLE_COMPLETE] Cycle 8 | Messages Sent: 5 | Messages Received: 71
-2025-10-14 08:02:26,555 [BALL_UPDATE] Agent 7 | Vision Ball=(0.01, -0.0) | Estimated Ball=[0.00, -0.00] | Diff=[-0.01, -0.00] (0.01m)
-2025-10-14 08:02:26,555 [RESET] Voting list reset for cycle 9
-2025-10-14 08:02:27,187 [CYCLE_COMPLETE] Cycle 9 | Messages Sent: 6 | Messages Received: 79
-2025-10-14 08:02:27,196 [BALL_UPDATE] Agent 7 | Vision Ball=(-0.01, -0.01) | Estimated Ball=[-0.00, -0.00] | Diff=[0.01, 0.01] (0.01m)
-2025-10-14 08:02:27,196 [RESET] Voting list reset for cycle 10
-2025-10-14 08:02:27,918 [CYCLE_COMPLETE] Cycle 10 | Messages Sent: 7 | Messages Received: 88
-2025-10-14 08:02:27,919 [BALL_UPDATE] Agent 7 | Vision Ball=(-0.02, -0.01) | Estimated Ball=[-0.00, 0.00] | Diff=[0.02, 0.01] (0.02m)
-2025-10-14 08:02:27,919 [RESET] Voting list reset for cycle 11
-2025-10-14 08:02:28,652 [CYCLE_COMPLETE] Cycle 11 | Messages Sent: 8 | Messages Received: 96
-2025-10-14 08:02:28,653 [BALL_UPDATE] Agent 7 | Vision Ball=(-0.01, 0.01) | Estimated Ball=[-0.00, 0.00] | Diff=[0.01, -0.01] (0.01m)
-2025-10-14 08:02:28,653 [RESET] Voting list reset for cycle 12
-2025-10-14 08:02:28,816 [CYCLE_COMPLETE] Cycle 12 | Messages Sent: 9 | Messages Received: 104
-2025-10-14 08:02:28,817 [BALL_UPDATE] Agent 7 | Vision Ball=(0.11, -0.04) | Estimated Ball=[0.13, -0.04] | Diff=[0.02, -0.00] (0.02m)
-2025-10-14 08:02:28,817 [RESET] Voting list reset for cycle 13
-2025-10-14 08:02:29,841 [CYCLE_COMPLETE] Cycle 13 | Messages Sent: 10 | Messages Received: 112
-2025-10-14 08:02:29,842 [BALL_UPDATE] Agent 7 | Vision Ball=(0.23, -0.04) | Estimated Ball=[0.24, -0.04] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:02:29,842 [RESET] Voting list reset for cycle 14
-2025-10-14 08:02:30,566 [CYCLE_COMPLETE] Cycle 14 | Messages Sent: 11 | Messages Received: 121
-2025-10-14 08:02:30,567 [BALL_UPDATE] Agent 7 | Vision Ball=(0.36, -0.02) | Estimated Ball=[0.32, -0.02] | Diff=[-0.04, 0.00] (0.04m)
-2025-10-14 08:02:30,567 [RESET] Voting list reset for cycle 15
-2025-10-14 08:02:31,226 [CYCLE_COMPLETE] Cycle 15 | Messages Sent: 12 | Messages Received: 130
-2025-10-14 08:02:31,227 [BALL_UPDATE] Agent 7 | Vision Ball=(0.42, -0.02) | Estimated Ball=[0.44, -0.01] | Diff=[0.02, 0.01] (0.02m)
-2025-10-14 08:02:31,227 [RESET] Voting list reset for cycle 16
-2025-10-14 08:02:31,799 [CYCLE_COMPLETE] Cycle 16 | Messages Sent: 13 | Messages Received: 139
-2025-10-14 08:02:31,800 [BALL_UPDATE] Agent 7 | Vision Ball=(0.48, 0.01) | Estimated Ball=[0.48, 0.00] | Diff=[0.00, -0.01] (0.01m)
-2025-10-14 08:02:31,800 [RESET] Voting list reset for cycle 17
-2025-10-14 08:02:32,478 [CYCLE_COMPLETE] Cycle 17 | Messages Sent: 14 | Messages Received: 148
-2025-10-14 08:02:32,479 [BALL_UPDATE] Agent 7 | Vision Ball=(0.48, -0.0) | Estimated Ball=[0.51, 0.00] | Diff=[0.03, 0.00] (0.03m)
-2025-10-14 08:02:32,479 [RESET] Voting list reset for cycle 18
-2025-10-14 08:02:33,078 [CYCLE_COMPLETE] Cycle 18 | Messages Sent: 15 | Messages Received: 156
-2025-10-14 08:02:33,079 [BALL_UPDATE] Agent 7 | Vision Ball=(0.52, 0.01) | Estimated Ball=[0.52, 0.00] | Diff=[-0.00, -0.01] (0.01m)
-2025-10-14 08:02:33,079 [RESET] Voting list reset for cycle 19
-2025-10-14 08:02:33,805 [CYCLE_COMPLETE] Cycle 19 | Messages Sent: 16 | Messages Received: 165
-2025-10-14 08:02:33,805 [BALL_UPDATE] Agent 7 | Vision Ball=(0.53, 0.02) | Estimated Ball=[0.52, 0.01] | Diff=[-0.01, -0.01] (0.01m)
-2025-10-14 08:02:33,805 [RESET] Voting list reset for cycle 20
-2025-10-14 08:02:34,481 [CYCLE_COMPLETE] Cycle 20 | Messages Sent: 17 | Messages Received: 172
-2025-10-14 08:02:34,481 [BALL_UPDATE] Agent 7 | Vision Ball=(0.85, 0.03) | Estimated Ball=[1.18, 0.03] | Diff=[0.33, 0.00] (0.33m)
-2025-10-14 08:02:34,482 [RESET] Voting list reset for cycle 21
-2025-10-14 08:02:35,208 [CYCLE_COMPLETE] Cycle 21 | Messages Sent: 18 | Messages Received: 179
-2025-10-14 08:02:35,209 [BALL_UPDATE] Agent 7 | Vision Ball=(2.5, 0.07) | Estimated Ball=[2.37, 0.08] | Diff=[-0.13, 0.01] (0.13m)
-2025-10-14 08:02:35,209 [RESET] Voting list reset for cycle 22
-2025-10-14 08:02:35,861 [CYCLE_COMPLETE] Cycle 22 | Messages Sent: 19 | Messages Received: 186
-2025-10-14 08:02:35,862 [BALL_UPDATE] Agent 7 | Vision Ball=(3.55, 0.13) | Estimated Ball=[3.29, 0.11] | Diff=[-0.26, -0.02] (0.26m)
-2025-10-14 08:02:35,862 [RESET] Voting list reset for cycle 23
-2025-10-14 08:02:36,534 [CYCLE_COMPLETE] Cycle 23 | Messages Sent: 20 | Messages Received: 193
-2025-10-14 08:02:36,534 [BALL_UPDATE] Agent 7 | Vision Ball=(4.21, 0.16) | Estimated Ball=[4.17, 0.15] | Diff=[-0.04, -0.01] (0.04m)
-2025-10-14 08:02:36,534 [RESET] Voting list reset for cycle 24
-2025-10-14 08:02:37,139 [CYCLE_COMPLETE] Cycle 24 | Messages Sent: 21 | Messages Received: 202
-2025-10-14 08:02:37,140 [BALL_UPDATE] Agent 7 | Vision Ball=(4.63, 0.18) | Estimated Ball=[4.61, 0.17] | Diff=[-0.02, -0.01] (0.02m)
-2025-10-14 08:02:37,140 [RESET] Voting list reset for cycle 25
-2025-10-14 08:02:37,849 [CYCLE_COMPLETE] Cycle 25 | Messages Sent: 22 | Messages Received: 211
-2025-10-14 08:02:37,849 [BALL_UPDATE] Agent 7 | Vision Ball=(4.9, 0.2) | Estimated Ball=[4.88, 0.19] | Diff=[-0.02, -0.01] (0.03m)
-2025-10-14 08:02:37,849 [RESET] Voting list reset for cycle 26
-2025-10-14 08:02:38,444 [CYCLE_COMPLETE] Cycle 26 | Messages Sent: 23 | Messages Received: 219
-2025-10-14 08:02:38,445 [BALL_UPDATE] Agent 7 | Vision Ball=(5.04, 0.19) | Estimated Ball=[5.05, 0.19] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:02:38,445 [RESET] Voting list reset for cycle 27
-2025-10-14 08:02:39,121 [CYCLE_COMPLETE] Cycle 27 | Messages Sent: 24 | Messages Received: 227
-2025-10-14 08:02:39,122 [BALL_UPDATE] Agent 7 | Vision Ball=(5.12, 0.19) | Estimated Ball=[5.13, 0.19] | Diff=[0.01, 0.00] (0.01m)
-2025-10-14 08:02:39,122 [RESET] Voting list reset for cycle 28
-2025-10-14 08:02:39,829 [CYCLE_COMPLETE] Cycle 28 | Messages Sent: 25 | Messages Received: 236
-2025-10-14 08:02:39,833 [BALL_UPDATE] Agent 7 | Vision Ball=(5.22, 0.22) | Estimated Ball=[5.21, 0.20] | Diff=[-0.01, -0.02] (0.02m)
-2025-10-14 08:02:39,834 [RESET] Voting list reset for cycle 29
-2025-10-14 08:02:40,504 [CYCLE_COMPLETE] Cycle 29 | Messages Sent: 26 | Messages Received: 244
-2025-10-14 08:02:40,504 [BALL_UPDATE] Agent 7 | Vision Ball=(5.25, 0.2) | Estimated Ball=[5.25, 0.21] | Diff=[-0.00, 0.01] (0.01m)
-2025-10-14 08:02:40,504 [RESET] Voting list reset for cycle 30
-2025-10-14 08:02:41,121 [CYCLE_COMPLETE] Cycle 30 | Messages Sent: 27 | Messages Received: 252
-2025-10-14 08:02:41,121 [BALL_UPDATE] Agent 7 | Vision Ball=(5.27, 0.21) | Estimated Ball=[5.28, 0.19] | Diff=[0.01, -0.02] (0.02m)
-2025-10-14 08:02:41,122 [RESET] Voting list reset for cycle 31
-2025-10-14 08:02:41,666 [CYCLE_COMPLETE] Cycle 31 | Messages Sent: 28 | Messages Received: 261
-2025-10-14 08:02:41,666 [BALL_UPDATE] Agent 7 | Vision Ball=(5.29, 0.19) | Estimated Ball=[5.29, 0.19] | Diff=[-0.00, 0.00] (0.00m)
-2025-10-14 08:02:41,666 [RESET] Voting list reset for cycle 32
-2025-10-14 08:02:42,326 [CYCLE_COMPLETE] Cycle 32 | Messages Sent: 29 | Messages Received: 270
-2025-10-14 08:02:42,327 [BALL_UPDATE] Agent 7 | Vision Ball=(5.29, 0.18) | Estimated Ball=[5.30, 0.21] | Diff=[0.01, 0.03] (0.03m)
-2025-10-14 08:02:42,327 [RESET] Voting list reset for cycle 33
-2025-10-14 08:02:43,109 [CYCLE_COMPLETE] Cycle 33 | Messages Sent: 30 | Messages Received: 278
-2025-10-14 08:02:43,110 [BALL_UPDATE] Agent 7 | Vision Ball=(5.31, 0.2) | Estimated Ball=[5.31, 0.19] | Diff=[-0.00, -0.01] (0.01m)
-2025-10-14 08:02:43,111 [RESET] Voting list reset for cycle 34
-2025-10-14 08:02:43,782 [CYCLE_COMPLETE] Cycle 34 | Messages Sent: 31 | Messages Received: 287
-2025-10-14 08:02:43,782 [BALL_UPDATE] Agent 7 | Vision Ball=(5.3, 0.21) | Estimated Ball=[5.31, 0.21] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:02:43,782 [RESET] Voting list reset for cycle 35
-2025-10-14 08:02:44,406 [CYCLE_COMPLETE] Cycle 35 | Messages Sent: 32 | Messages Received: 296
-2025-10-14 08:02:44,406 [BALL_UPDATE] Agent 7 | Vision Ball=(5.32, 0.21) | Estimated Ball=[5.31, 0.20] | Diff=[-0.01, -0.01] (0.01m)
-2025-10-14 08:02:44,406 [RESET] Voting list reset for cycle 36
-2025-10-14 08:02:45,114 [CYCLE_COMPLETE] Cycle 36 | Messages Sent: 33 | Messages Received: 304
-2025-10-14 08:02:45,114 [BALL_UPDATE] Agent 7 | Vision Ball=(5.38, 0.22) | Estimated Ball=[5.38, 0.22] | Diff=[-0.00, 0.00] (0.01m)
-2025-10-14 08:02:45,114 [RESET] Voting list reset for cycle 37
-2025-10-14 08:02:45,726 [CYCLE_COMPLETE] Cycle 37 | Messages Sent: 34 | Messages Received: 312
-2025-10-14 08:02:45,726 [BALL_UPDATE] Agent 7 | Vision Ball=(5.5, 0.29) | Estimated Ball=[5.51, 0.29] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:02:45,726 [RESET] Voting list reset for cycle 38
-2025-10-14 08:02:46,380 [CYCLE_COMPLETE] Cycle 38 | Messages Sent: 35 | Messages Received: 319
-2025-10-14 08:02:46,381 [BALL_UPDATE] Agent 7 | Vision Ball=(5.52, 0.28) | Estimated Ball=[5.53, 0.28] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:02:46,381 [RESET] Voting list reset for cycle 39
-2025-10-14 08:02:47,115 [CYCLE_COMPLETE] Cycle 39 | Messages Sent: 36 | Messages Received: 327
-2025-10-14 08:02:47,116 [BALL_UPDATE] Agent 7 | Vision Ball=(5.5, 0.33) | Estimated Ball=[5.49, 0.33] | Diff=[-0.01, -0.00] (0.01m)
-2025-10-14 08:02:47,116 [RESET] Voting list reset for cycle 40
-2025-10-14 08:02:47,843 [CYCLE_COMPLETE] Cycle 40 | Messages Sent: 37 | Messages Received: 335
-2025-10-14 08:02:47,843 [BALL_UPDATE] Agent 7 | Vision Ball=(5.41, 0.22) | Estimated Ball=[5.40, 0.19] | Diff=[-0.01, -0.03] (0.03m)
-2025-10-14 08:02:47,843 [RESET] Voting list reset for cycle 41
-2025-10-14 08:02:48,542 [CYCLE_COMPLETE] Cycle 41 | Messages Sent: 38 | Messages Received: 342
-2025-10-14 08:02:48,543 [BALL_UPDATE] Agent 7 | Vision Ball=(5.31, -0.04) | Estimated Ball=[5.31, -0.06] | Diff=[-0.00, -0.02] (0.02m)
-2025-10-14 08:02:48,543 [RESET] Voting list reset for cycle 42
-2025-10-14 08:02:49,272 [CYCLE_COMPLETE] Cycle 42 | Messages Sent: 39 | Messages Received: 350
-2025-10-14 08:02:49,273 [BALL_UPDATE] Agent 7 | Vision Ball=(5.24, -0.22) | Estimated Ball=[5.25, -0.19] | Diff=[0.01, 0.03] (0.03m)
-2025-10-14 08:02:49,273 [RESET] Voting list reset for cycle 43
-2025-10-14 08:02:49,948 [CYCLE_COMPLETE] Cycle 43 | Messages Sent: 40 | Messages Received: 358
-2025-10-14 08:02:49,948 [BALL_UPDATE] Agent 7 | Vision Ball=(5.23, -0.29) | Estimated Ball=[5.23, -0.30] | Diff=[-0.00, -0.01] (0.01m)
-2025-10-14 08:02:49,949 [RESET] Voting list reset for cycle 44
-2025-10-14 08:02:50,625 [CYCLE_COMPLETE] Cycle 44 | Messages Sent: 41 | Messages Received: 367
-2025-10-14 08:02:50,625 [BALL_UPDATE] Agent 7 | Vision Ball=(5.2, -0.35) | Estimated Ball=[5.19, -0.36] | Diff=[-0.01, -0.01] (0.02m)
-2025-10-14 08:02:50,625 [RESET] Voting list reset for cycle 45
-2025-10-14 08:02:51,368 [CYCLE_COMPLETE] Cycle 45 | Messages Sent: 42 | Messages Received: 375
-2025-10-14 08:02:51,368 [BALL_UPDATE] Agent 7 | Vision Ball=(5.18, -0.39) | Estimated Ball=[5.18, -0.39] | Diff=[-0.00, -0.00] (0.00m)
-2025-10-14 08:02:51,368 [RESET] Voting list reset for cycle 46
-2025-10-14 08:02:52,064 [CYCLE_COMPLETE] Cycle 46 | Messages Sent: 43 | Messages Received: 383
-2025-10-14 08:02:52,064 [BALL_UPDATE] Agent 7 | Vision Ball=(5.2, -0.42) | Estimated Ball=[5.17, -0.43] | Diff=[-0.03, -0.01] (0.03m)
-2025-10-14 08:02:52,064 [RESET] Voting list reset for cycle 47
-2025-10-14 08:02:52,797 [CYCLE_COMPLETE] Cycle 47 | Messages Sent: 44 | Messages Received: 390
-2025-10-14 08:02:52,798 [BALL_UPDATE] Agent 7 | Vision Ball=(5.17, -0.43) | Estimated Ball=[5.18, -0.43] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:02:52,798 [RESET] Voting list reset for cycle 48
-2025-10-14 08:02:53,492 [CYCLE_COMPLETE] Cycle 48 | Messages Sent: 45 | Messages Received: 399
-2025-10-14 08:02:53,492 [BALL_UPDATE] Agent 7 | Vision Ball=(5.18, -0.46) | Estimated Ball=[5.17, -0.45] | Diff=[-0.01, 0.01] (0.01m)
-2025-10-14 08:02:53,492 [RESET] Voting list reset for cycle 49
-2025-10-14 08:02:54,241 [CYCLE_COMPLETE] Cycle 49 | Messages Sent: 46 | Messages Received: 407
-2025-10-14 08:02:54,242 [BALL_UPDATE] Agent 7 | Vision Ball=(5.18, -0.45) | Estimated Ball=[5.17, -0.45] | Diff=[-0.01, -0.00] (0.01m)
-2025-10-14 08:02:54,242 [RESET] Voting list reset for cycle 50
-2025-10-14 08:02:54,894 [CYCLE_COMPLETE] Cycle 50 | Messages Sent: 47 | Messages Received: 415
-2025-10-14 08:02:54,895 [BALL_UPDATE] Agent 7 | Vision Ball=(5.26, -0.46) | Estimated Ball=[5.44, -0.46] | Diff=[0.18, -0.00] (0.18m)
-2025-10-14 08:02:54,895 [RESET] Voting list reset for cycle 51
-2025-10-14 08:02:55,587 [CYCLE_COMPLETE] Cycle 51 | Messages Sent: 48 | Messages Received: 421
-2025-10-14 08:02:55,587 [BALL_UPDATE] Agent 7 | Vision Ball=(7.06, -0.5) | Estimated Ball=[7.00, -0.48] | Diff=[-0.06, 0.02] (0.06m)
-2025-10-14 08:02:55,587 [RESET] Voting list reset for cycle 52
-2025-10-14 08:02:56,208 [CYCLE_COMPLETE] Cycle 52 | Messages Sent: 49 | Messages Received: 428
-2025-10-14 08:02:56,208 [BALL_UPDATE] Agent 7 | Vision Ball=(8.19, -0.51) | Estimated Ball=[8.12, -0.49] | Diff=[-0.07, 0.02] (0.07m)
-2025-10-14 08:02:56,208 [RESET] Voting list reset for cycle 53
-2025-10-14 08:02:57,087 [CYCLE_COMPLETE] Cycle 53 | Messages Sent: 50 | Messages Received: 435
-2025-10-14 08:02:57,087 [BALL_UPDATE] Agent 7 | Vision Ball=(8.9, -0.49) | Estimated Ball=[8.86, -0.50] | Diff=[-0.04, -0.01] (0.04m)
-2025-10-14 08:02:57,087 [RESET] Voting list reset for cycle 54
-2025-10-14 08:02:57,879 [CYCLE_COMPLETE] Cycle 54 | Messages Sent: 51 | Messages Received: 443
-2025-10-14 08:02:57,880 [BALL_UPDATE] Agent 7 | Vision Ball=(9.33, -0.49) | Estimated Ball=[9.30, -0.51] | Diff=[-0.03, -0.02] (0.04m)
-2025-10-14 08:02:57,880 [RESET] Voting list reset for cycle 55
-2025-10-14 08:02:58,748 [CYCLE_COMPLETE] Cycle 55 | Messages Sent: 52 | Messages Received: 451
-2025-10-14 08:02:58,749 [BALL_UPDATE] Agent 7 | Vision Ball=(9.61, -0.5) | Estimated Ball=[9.59, -0.51] | Diff=[-0.02, -0.01] (0.02m)
-2025-10-14 08:02:58,749 [RESET] Voting list reset for cycle 56
-2025-10-14 08:02:59,370 [CYCLE_COMPLETE] Cycle 56 | Messages Sent: 53 | Messages Received: 460
-2025-10-14 08:02:59,370 [BALL_UPDATE] Agent 7 | Vision Ball=(9.8, -0.5) | Estimated Ball=[9.78, -0.51] | Diff=[-0.02, -0.01] (0.02m)
-2025-10-14 08:02:59,371 [RESET] Voting list reset for cycle 57
-2025-10-14 08:03:00,072 [CYCLE_COMPLETE] Cycle 57 | Messages Sent: 54 | Messages Received: 469
-2025-10-14 08:03:00,072 [BALL_UPDATE] Agent 7 | Vision Ball=(9.9, -0.5) | Estimated Ball=[9.89, -0.52] | Diff=[-0.01, -0.02] (0.02m)
-2025-10-14 08:03:00,072 [RESET] Voting list reset for cycle 58
-2025-10-14 08:03:00,672 [CYCLE_COMPLETE] Cycle 58 | Messages Sent: 55 | Messages Received: 476
-2025-10-14 08:03:00,673 [BALL_UPDATE] Agent 7 | Vision Ball=(9.96, -0.5) | Estimated Ball=[9.97, -0.52] | Diff=[0.01, -0.02] (0.02m)
-2025-10-14 08:03:00,673 [RESET] Voting list reset for cycle 59
-2025-10-14 08:03:00,614 [CYCLE_COMPLETE] Cycle 59 | Messages Sent: 56 | Messages Received: 484
-2025-10-14 08:03:00,614 [BALL_UPDATE] Agent 7 | Vision Ball=(10.01, -0.5) | Estimated Ball=[10.00, -0.52] | Diff=[-0.01, -0.02] (0.02m)
-2025-10-14 08:03:00,614 [RESET] Voting list reset for cycle 60
-2025-10-14 08:03:01,146 [CYCLE_COMPLETE] Cycle 60 | Messages Sent: 57 | Messages Received: 492
-2025-10-14 08:03:01,146 [BALL_UPDATE] Agent 7 | Vision Ball=(10.03, -0.54) | Estimated Ball=[10.03, -0.52] | Diff=[-0.00, 0.02] (0.02m)
-2025-10-14 08:03:01,146 [RESET] Voting list reset for cycle 61
-2025-10-14 08:03:01,857 [CYCLE_COMPLETE] Cycle 61 | Messages Sent: 58 | Messages Received: 500
-2025-10-14 08:03:01,859 [BALL_UPDATE] Agent 7 | Vision Ball=(10.04, -0.54) | Estimated Ball=[10.04, -0.53] | Diff=[0.00, 0.01] (0.01m)
-2025-10-14 08:03:01,859 [RESET] Voting list reset for cycle 62
-2025-10-14 08:03:02,468 [CYCLE_COMPLETE] Cycle 62 | Messages Sent: 59 | Messages Received: 509
-2025-10-14 08:03:02,468 [BALL_UPDATE] Agent 7 | Vision Ball=(10.04, -0.54) | Estimated Ball=[10.06, -0.53] | Diff=[0.02, 0.01] (0.02m)
-2025-10-14 08:03:02,469 [RESET] Voting list reset for cycle 63
-2025-10-14 08:03:03,109 [CYCLE_COMPLETE] Cycle 63 | Messages Sent: 60 | Messages Received: 518
-2025-10-14 08:03:03,110 [BALL_UPDATE] Agent 7 | Vision Ball=(10.05, -0.52) | Estimated Ball=[10.07, -0.52] | Diff=[0.02, 0.00] (0.02m)
-2025-10-14 08:03:03,110 [RESET] Voting list reset for cycle 64
-2025-10-14 08:03:03,766 [CYCLE_COMPLETE] Cycle 64 | Messages Sent: 61 | Messages Received: 527
-2025-10-14 08:03:03,766 [BALL_UPDATE] Agent 7 | Vision Ball=(10.07, -0.52) | Estimated Ball=[10.06, -0.53] | Diff=[-0.01, -0.01] (0.01m)
-2025-10-14 08:03:03,766 [RESET] Voting list reset for cycle 65
-2025-10-14 08:03:04,388 [CYCLE_COMPLETE] Cycle 65 | Messages Sent: 62 | Messages Received: 535
-2025-10-14 08:03:04,388 [BALL_UPDATE] Agent 7 | Vision Ball=(10.09, -0.51) | Estimated Ball=[10.08, -0.52] | Diff=[-0.01, -0.01] (0.01m)
-2025-10-14 08:03:04,388 [RESET] Voting list reset for cycle 66
-2025-10-14 08:03:05,127 [CYCLE_COMPLETE] Cycle 66 | Messages Sent: 63 | Messages Received: 543
-2025-10-14 08:03:05,127 [BALL_UPDATE] Agent 7 | Vision Ball=(10.05, -0.54) | Estimated Ball=[10.07, -0.53] | Diff=[0.02, 0.01] (0.02m)
-2025-10-14 08:03:05,127 [RESET] Voting list reset for cycle 67
-2025-10-14 08:03:05,811 [CYCLE_COMPLETE] Cycle 67 | Messages Sent: 64 | Messages Received: 551
-2025-10-14 08:03:05,811 [BALL_UPDATE] Agent 7 | Vision Ball=(10.08, -0.52) | Estimated Ball=[10.10, -0.50] | Diff=[0.02, 0.02] (0.03m)
-2025-10-14 08:03:05,812 [RESET] Voting list reset for cycle 68
-2025-10-14 08:03:06,523 [CYCLE_COMPLETE] Cycle 68 | Messages Sent: 65 | Messages Received: 559
-2025-10-14 08:03:06,523 [BALL_UPDATE] Agent 7 | Vision Ball=(10.46, -0.37) | Estimated Ball=[10.42, -0.40] | Diff=[-0.04, -0.03] (0.05m)
-2025-10-14 08:03:06,523 [RESET] Voting list reset for cycle 69
-2025-10-14 08:03:07,168 [CYCLE_COMPLETE] Cycle 69 | Messages Sent: 66 | Messages Received: 567
-2025-10-14 08:03:07,168 [BALL_UPDATE] Agent 7 | Vision Ball=(10.73, -0.31) | Estimated Ball=[10.70, -0.32] | Diff=[-0.03, -0.01] (0.03m)
-2025-10-14 08:03:07,168 [RESET] Voting list reset for cycle 70
-2025-10-14 08:03:07,811 [CYCLE_COMPLETE] Cycle 70 | Messages Sent: 67 | Messages Received: 574
-2025-10-14 08:03:07,812 [BALL_UPDATE] Agent 7 | Vision Ball=(10.9, -0.25) | Estimated Ball=[10.90, -0.26] | Diff=[0.00, -0.01] (0.01m)
-2025-10-14 08:03:07,812 [RESET] Voting list reset for cycle 71
-2025-10-14 08:03:08,390 [CYCLE_COMPLETE] Cycle 71 | Messages Sent: 68 | Messages Received: 583
-2025-10-14 08:03:08,390 [BALL_UPDATE] Agent 7 | Vision Ball=(11.01, -0.23) | Estimated Ball=[11.04, -0.23] | Diff=[0.03, 0.00] (0.03m)
-2025-10-14 08:03:08,390 [RESET] Voting list reset for cycle 72
-2025-10-14 08:03:09,111 [CYCLE_COMPLETE] Cycle 72 | Messages Sent: 69 | Messages Received: 592
-2025-10-14 08:03:09,112 [BALL_UPDATE] Agent 7 | Vision Ball=(11.1, -0.18) | Estimated Ball=[11.10, -0.21] | Diff=[0.00, -0.03] (0.03m)
-2025-10-14 08:03:09,112 [RESET] Voting list reset for cycle 73
-2025-10-14 08:03:09,704 [CYCLE_COMPLETE] Cycle 73 | Messages Sent: 70 | Messages Received: 600
-2025-10-14 08:03:09,704 [BALL_UPDATE] Agent 7 | Vision Ball=(11.14, -0.19) | Estimated Ball=[11.14, -0.19] | Diff=[0.00, -0.00] (0.00m)
-2025-10-14 08:03:09,705 [RESET] Voting list reset for cycle 74
-2025-10-14 08:03:10,460 [CYCLE_COMPLETE] Cycle 74 | Messages Sent: 71 | Messages Received: 608
-2025-10-14 08:03:10,461 [BALL_UPDATE] Agent 7 | Vision Ball=(11.19, -0.16) | Estimated Ball=[11.16, -0.18] | Diff=[-0.03, -0.02] (0.04m)
-2025-10-14 08:03:10,461 [RESET] Voting list reset for cycle 75
-2025-10-14 08:03:11,045 [CYCLE_COMPLETE] Cycle 75 | Messages Sent: 72 | Messages Received: 616
-2025-10-14 08:03:11,046 [BALL_UPDATE] Agent 7 | Vision Ball=(11.15, -0.19) | Estimated Ball=[11.19, -0.18] | Diff=[0.04, 0.01] (0.04m)
-2025-10-14 08:03:11,046 [RESET] Voting list reset for cycle 76
-2025-10-14 08:03:11,720 [CYCLE_COMPLETE] Cycle 76 | Messages Sent: 73 | Messages Received: 625
-2025-10-14 08:03:11,721 [BALL_UPDATE] Agent 7 | Vision Ball=(11.19, -0.17) | Estimated Ball=[11.19, -0.17] | Diff=[0.00, -0.00] (0.00m)
-2025-10-14 08:03:11,721 [RESET] Voting list reset for cycle 77
-2025-10-14 08:03:12,365 [CYCLE_COMPLETE] Cycle 77 | Messages Sent: 74 | Messages Received: 634
-2025-10-14 08:03:12,366 [BALL_UPDATE] Agent 7 | Vision Ball=(11.2, -0.16) | Estimated Ball=[11.20, -0.17] | Diff=[0.00, -0.01] (0.01m)
-2025-10-14 08:03:12,367 [RESET] Voting list reset for cycle 78
-2025-10-14 08:03:13,085 [CYCLE_COMPLETE] Cycle 78 | Messages Sent: 75 | Messages Received: 643
-2025-10-14 08:03:13,085 [BALL_UPDATE] Agent 7 | Vision Ball=(11.39, -0.1) | Estimated Ball=[11.45, -0.09] | Diff=[0.06, 0.01] (0.06m)
-2025-10-14 08:03:13,085 [RESET] Voting list reset for cycle 79
-2025-10-14 08:03:13,668 [CYCLE_COMPLETE] Cycle 79 | Messages Sent: 76 | Messages Received: 651
-2025-10-14 08:03:13,668 [BALL_UPDATE] Agent 7 | Vision Ball=(11.66, -0.01) | Estimated Ball=[11.66, -0.00] | Diff=[0.00, 0.01] (0.01m)
-2025-10-14 08:03:13,668 [RESET] Voting list reset for cycle 80
-2025-10-14 08:03:14,551 [CYCLE_COMPLETE] Cycle 80 | Messages Sent: 77 | Messages Received: 659
-2025-10-14 08:03:14,552 [BALL_UPDATE] Agent 7 | Vision Ball=(11.86, 0.05) | Estimated Ball=[11.88, 0.07] | Diff=[0.02, 0.02] (0.03m)
-2025-10-14 08:03:14,552 [RESET] Voting list reset for cycle 81
-2025-10-14 08:03:15,267 [CYCLE_COMPLETE] Cycle 81 | Messages Sent: 78 | Messages Received: 668
-2025-10-14 08:03:15,267 [BALL_UPDATE] Agent 7 | Vision Ball=(11.94, 0.08) | Estimated Ball=[11.98, 0.12] | Diff=[0.04, 0.04] (0.06m)
-2025-10-14 08:03:15,267 [RESET] Voting list reset for cycle 82
-2025-10-14 08:03:16,013 [CYCLE_COMPLETE] Cycle 82 | Messages Sent: 79 | Messages Received: 675
-2025-10-14 08:03:16,014 [BALL_UPDATE] Agent 7 | Vision Ball=(12.05, 0.14) | Estimated Ball=[12.06, 0.14] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:03:16,014 [RESET] Voting list reset for cycle 83
-2025-10-14 08:03:16,818 [CYCLE_COMPLETE] Cycle 83 | Messages Sent: 80 | Messages Received: 683
-2025-10-14 08:03:16,818 [BALL_UPDATE] Agent 7 | Vision Ball=(12.1, 0.17) | Estimated Ball=[12.10, 0.16] | Diff=[-0.00, -0.01] (0.01m)
-2025-10-14 08:03:16,818 [RESET] Voting list reset for cycle 84
-2025-10-14 08:03:17,647 [CYCLE_COMPLETE] Cycle 84 | Messages Sent: 81 | Messages Received: 691
-2025-10-14 08:03:17,647 [BALL_UPDATE] Agent 7 | Vision Ball=(12.1, 0.15) | Estimated Ball=[12.12, 0.16] | Diff=[0.02, 0.01] (0.02m)
-2025-10-14 08:03:17,649 [RESET] Voting list reset for cycle 85
-2025-10-14 08:03:18,444 [CYCLE_COMPLETE] Cycle 85 | Messages Sent: 82 | Messages Received: 699
-2025-10-14 08:03:18,444 [BALL_UPDATE] Agent 7 | Vision Ball=(12.13, 0.17) | Estimated Ball=[12.14, 0.17] | Diff=[0.01, -0.00] (0.01m)
-2025-10-14 08:03:18,444 [RESET] Voting list reset for cycle 86
-2025-10-14 08:03:19,044 [CYCLE_COMPLETE] Cycle 86 | Messages Sent: 83 | Messages Received: 707
-2025-10-14 08:03:19,045 [BALL_UPDATE] Agent 7 | Vision Ball=(12.74, 0.12) | Estimated Ball=[13.10, 0.11] | Diff=[0.36, -0.01] (0.36m)
-2025-10-14 08:03:19,045 [RESET] Voting list reset for cycle 87
-2025-10-14 08:03:19,682 [CYCLE_COMPLETE] Cycle 87 | Messages Sent: 84 | Messages Received: 715
-2025-10-14 08:03:19,682 [BALL_UPDATE] Agent 7 | Vision Ball=(14.66, -0.02) | Estimated Ball=[14.47, -0.00] | Diff=[-0.19, 0.02] (0.20m)
-2025-10-14 08:03:19,683 [RESET] Voting list reset for cycle 88
-2025-10-14 08:03:20,294 [CYCLE_COMPLETE] Cycle 88 | Messages Sent: 85 | Messages Received: 722
-2025-10-14 08:03:20,296 [BALL_UPDATE] Agent 7 | Vision Ball=(0.0, 0.0) | Estimated Ball=[0.00, 0.00] | Diff=[0.00, 0.00] (0.00m)
-2025-10-14 08:03:20,296 [RESET] Voting list reset for cycle 89
-2025-10-14 08:03:20,895 [CYCLE_COMPLETE] Cycle 89 | Messages Sent: 86 | Messages Received: 731
-2025-10-14 08:03:20,895 [BALL_UPDATE] Agent 7 | Vision Ball=(0.0, 0.0) | Estimated Ball=[0.00, 0.00] | Diff=[0.00, 0.00] (0.00m)
-2025-10-14 08:03:20,895 [RESET] Voting list reset for cycle 90
-2025-10-14 08:03:21,546 [CYCLE_COMPLETE] Cycle 90 | Messages Sent: 87 | Messages Received: 740
-2025-10-14 08:03:21,547 [BALL_UPDATE] Agent 7 | Vision Ball=(0.0, 0.0) | Estimated Ball=[0.00, 0.00] | Diff=[0.00, 0.00] (0.00m)
-2025-10-14 08:03:21,547 [RESET] Voting list reset for cycle 91
-2025-10-14 08:03:22,285 [CYCLE_COMPLETE] Cycle 91 | Messages Sent: 88 | Messages Received: 749
-2025-10-14 08:03:22,285 [BALL_UPDATE] Agent 7 | Vision Ball=(0.0, 0.0) | Estimated Ball=[0.00, 0.00] | Diff=[0.00, 0.00] (0.00m)
-2025-10-14 08:03:22,286 [RESET] Voting list reset for cycle 92
-2025-10-14 08:03:23,132 [CYCLE_COMPLETE] Cycle 92 | Messages Sent: 89 | Messages Received: 758
-2025-10-14 08:03:23,132 [BALL_UPDATE] Agent 7 | Vision Ball=(0.0, 0.0) | Estimated Ball=[0.00, 0.00] | Diff=[0.00, 0.00] (0.00m)
-2025-10-14 08:03:23,132 [RESET] Voting list reset for cycle 93
+2025-11-09 18:46:10,847 [CYCLE_COMPLETE] Cycle 0 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:10,848 [BALL_UPDATE] Agent 7 | Sent ball=(-0.01, -0.01) | Vision Ball=(-0.0, 0.0) | Estimated Ball=[-0.00, -0.00] Agent Pos=(-4.9, 5.04)
+2025-11-09 18:46:10,848 [RESET] Voting list reset for cycle 1
+2025-11-09 18:46:11,630 [CYCLE_COMPLETE] Cycle 1 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:11,630 [BALL_UPDATE] Agent 7 | Sent ball=(-0.01, 0.0) | Vision Ball=(-0.01, 0.0) | Estimated Ball=[-0.00, 0.00] Agent Pos=(-4.68, 4.97)
+2025-11-09 18:46:11,630 [RESET] Voting list reset for cycle 2
+2025-11-09 18:46:12,485 [CYCLE_COMPLETE] Cycle 2 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:12,486 [BALL_UPDATE] Agent 7 | Sent ball=(0.0, -0.0) | Vision Ball=(0.01, -0.0) | Estimated Ball=[0.00, -0.00] Agent Pos=(-4.38, 4.93)
+2025-11-09 18:46:12,486 [RESET] Voting list reset for cycle 3
+2025-11-09 18:46:13,484 [CYCLE_COMPLETE] Cycle 3 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:13,485 [BALL_UPDATE] Agent 7 | Sent ball=(0.01, 0.02) | Vision Ball=(-0.01, -0.0) | Estimated Ball=[0.00, 0.01] Agent Pos=(-4.08, 4.86)
+2025-11-09 18:46:13,485 [RESET] Voting list reset for cycle 4
+2025-11-09 18:46:14,501 [CYCLE_COMPLETE] Cycle 4 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:14,501 [BALL_UPDATE] Agent 7 | Sent ball=(-0.0, 0.01) | Vision Ball=(0.0, 0.0) | Estimated Ball=[-0.00, -0.00] Agent Pos=(-3.82, 4.81)
+2025-11-09 18:46:14,502 [RESET] Voting list reset for cycle 5
+2025-11-09 18:46:15,369 [CYCLE_COMPLETE] Cycle 5 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:15,369 [BALL_UPDATE] Agent 7 | Sent ball=(-0.01, -0.02) | Vision Ball=(-0.01, -0.02) | Estimated Ball=[0.00, 0.00] Agent Pos=(-3.47, 4.78)
+2025-11-09 18:46:15,369 [RESET] Voting list reset for cycle 6
+2025-11-09 18:46:16,389 [CYCLE_COMPLETE] Cycle 6 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:16,389 [BALL_UPDATE] Agent 7 | Sent ball=(-0.03, -0.03) | Vision Ball=(0.01, -0.0) | Estimated Ball=[-0.00, -0.00] Agent Pos=(-3.18, 4.71)
+2025-11-09 18:46:16,389 [RESET] Voting list reset for cycle 7
+2025-11-09 18:46:17,622 [CYCLE_COMPLETE] Cycle 7 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:17,622 [BALL_UPDATE] Agent 7 | Sent ball=(0.0, 0.0) | Vision Ball=(0.01, 0.01) | Estimated Ball=[-0.00, 0.00] Agent Pos=(-2.92, 4.73)
+2025-11-09 18:46:17,622 [RESET] Voting list reset for cycle 8
+2025-11-09 18:46:18,742 [CYCLE_COMPLETE] Cycle 8 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:18,753 [BALL_UPDATE] Agent 7 | Sent ball=(-0.01, -0.01) | Vision Ball=(0.02, 0.01) | Estimated Ball=[0.00, -0.00] Agent Pos=(-2.6, 4.73)
+2025-11-09 18:46:18,753 [RESET] Voting list reset for cycle 9
+2025-11-09 18:46:19,595 [CYCLE_COMPLETE] Cycle 9 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:19,597 [BALL_UPDATE] Agent 7 | Sent ball=(0.01, 0.01) | Vision Ball=(-0.01, -0.0) | Estimated Ball=[0.00, 0.00] Agent Pos=(-2.31, 4.78)
+2025-11-09 18:46:19,597 [RESET] Voting list reset for cycle 10
+2025-11-09 18:46:20,472 [CYCLE_COMPLETE] Cycle 10 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:20,472 [BALL_UPDATE] Agent 7 | Sent ball=(-0.0, 0.0) | Vision Ball=(0.0, 0.0) | Estimated Ball=[0.00, 0.00] Agent Pos=(-2.03, 4.83)
+2025-11-09 18:46:20,472 [RESET] Voting list reset for cycle 11
+2025-11-09 18:46:21,314 [CYCLE_COMPLETE] Cycle 11 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:21,315 [BALL_UPDATE] Agent 7 | Sent ball=(-0.0, 0.02) | Vision Ball=(-0.01, -0.01) | Estimated Ball=[0.00, 0.00] Agent Pos=(-1.76, 4.92)
+2025-11-09 18:46:21,315 [RESET] Voting list reset for cycle 12
+2025-11-09 18:46:22,230 [CYCLE_COMPLETE] Cycle 12 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:22,230 [BALL_UPDATE] Agent 7 | Sent ball=(0.01, -0.01) | Vision Ball=(-0.01, -0.0) | Estimated Ball=[0.00, -0.00] Agent Pos=(-1.56, 5.01)
+2025-11-09 18:46:22,231 [RESET] Voting list reset for cycle 13
+2025-11-09 18:46:23,129 [CYCLE_COMPLETE] Cycle 13 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:23,130 [BALL_UPDATE] Agent 7 | Sent ball=(-0.0, -0.0) | Vision Ball=(0.02, 0.01) | Estimated Ball=[0.00, 0.00] Agent Pos=(-1.54, 5.02)
+2025-11-09 18:46:23,130 [RESET] Voting list reset for cycle 14
+2025-11-09 18:46:23,925 [CYCLE_COMPLETE] Cycle 14 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:23,925 [BALL_UPDATE] Agent 7 | Sent ball=(-0.0, -0.01) | Vision Ball=(0.86, 0.05) | Estimated Ball=[0.01, 0.00] Agent Pos=(-1.53, 5.01)
+2025-11-09 18:46:23,925 [RESET] Voting list reset for cycle 15
+2025-11-09 18:46:24,152 [CYCLE_COMPLETE] Cycle 15 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:24,153 [BALL_UPDATE] Agent 7 | Sent ball=(1.46, 0.09) | Vision Ball=(2.25, 0.12) | Estimated Ball=[1.25, 0.07] Agent Pos=(-1.36, 5.01)
+2025-11-09 18:46:24,154 [RESET] Voting list reset for cycle 16
+2025-11-09 18:46:25,160 [CYCLE_COMPLETE] Cycle 16 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:25,161 [BALL_UPDATE] Agent 7 | Sent ball=(2.58, 0.13) | Vision Ball=(3.12, 0.18) | Estimated Ball=[2.58, 0.13] Agent Pos=(-1.06, 5.06)
+2025-11-09 18:46:25,161 [RESET] Voting list reset for cycle 17
+2025-11-09 18:46:26,214 [CYCLE_COMPLETE] Cycle 17 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:26,215 [BALL_UPDATE] Agent 7 | Sent ball=(3.32, 0.16) | Vision Ball=(3.64, 0.18) | Estimated Ball=[3.30, 0.18] Agent Pos=(-0.78, 4.94)
+2025-11-09 18:46:26,215 [RESET] Voting list reset for cycle 18
+2025-11-09 18:46:27,475 [CYCLE_COMPLETE] Cycle 18 | Messages Sent: 1 | Messages Received: 4
+2025-11-09 18:46:27,475 [BALL_UPDATE] Agent 7 | Sent ball=(3.77, 0.19) | Vision Ball=(3.97, 0.2) | Estimated Ball=[3.75, 0.20] Agent Pos=(-0.51, 4.88)
+2025-11-09 18:46:27,475 [RESET] Voting list reset for cycle 19
+2025-11-09 18:46:28,664 [CYCLE_COMPLETE] Cycle 19 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:28,665 [BALL_UPDATE] Agent 7 | Sent ball=(4.05, 0.21) | Vision Ball=(4.21, 0.23) | Estimated Ball=[4.05, 0.22] Agent Pos=(-0.21, 4.85)
+2025-11-09 18:46:28,666 [RESET] Voting list reset for cycle 20
+2025-11-09 18:46:29,759 [CYCLE_COMPLETE] Cycle 20 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:29,760 [BALL_UPDATE] Agent 7 | Sent ball=(4.22, 0.22) | Vision Ball=(4.33, 0.25) | Estimated Ball=[4.22, 0.23] Agent Pos=(0.06, 4.77)
+2025-11-09 18:46:29,760 [RESET] Voting list reset for cycle 21
+2025-11-09 18:46:30,838 [CYCLE_COMPLETE] Cycle 21 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:30,838 [BALL_UPDATE] Agent 7 | Sent ball=(4.33, 0.22) | Vision Ball=(4.4, 0.26) | Estimated Ball=[4.34, 0.23] Agent Pos=(0.38, 4.77)
+2025-11-09 18:46:30,838 [RESET] Voting list reset for cycle 22
+2025-11-09 18:46:32,018 [CYCLE_COMPLETE] Cycle 22 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:32,018 [BALL_UPDATE] Agent 7 | Sent ball=(4.39, 0.22) | Vision Ball=(4.45, 0.22) | Estimated Ball=[4.40, 0.24] Agent Pos=(0.68, 4.74)
+2025-11-09 18:46:32,018 [RESET] Voting list reset for cycle 23
+2025-11-09 18:46:33,122 [CYCLE_COMPLETE] Cycle 23 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:33,123 [BALL_UPDATE] Agent 7 | Sent ball=(4.46, 0.24) | Vision Ball=(4.48, 0.25) | Estimated Ball=[4.45, 0.25] Agent Pos=(0.9, 4.75)
+2025-11-09 18:46:33,123 [RESET] Voting list reset for cycle 24
+2025-11-09 18:46:34,183 [CYCLE_COMPLETE] Cycle 24 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:34,184 [BALL_UPDATE] Agent 7 | Sent ball=(4.5, 0.25) | Vision Ball=(4.49, 0.24) | Estimated Ball=[4.49, 0.25] Agent Pos=(1.2, 4.86)
+2025-11-09 18:46:34,184 [RESET] Voting list reset for cycle 25
+2025-11-09 18:46:35,354 [CYCLE_COMPLETE] Cycle 25 | Messages Sent: 1 | Messages Received: 4
+2025-11-09 18:46:35,354 [BALL_UPDATE] Agent 7 | Sent ball=(4.51, 0.24) | Vision Ball=(4.52, 0.24) | Estimated Ball=[4.52, 0.24] Agent Pos=(1.39, 4.93)
+2025-11-09 18:46:35,354 [RESET] Voting list reset for cycle 26
+2025-11-09 18:46:36,493 [CYCLE_COMPLETE] Cycle 26 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:36,494 [BALL_UPDATE] Agent 7 | Sent ball=(4.52, 0.25) | Vision Ball=(4.53, 0.24) | Estimated Ball=[4.52, 0.24] Agent Pos=(1.45, 4.99)
+2025-11-09 18:46:36,495 [RESET] Voting list reset for cycle 27
+2025-11-09 18:46:37,644 [CYCLE_COMPLETE] Cycle 27 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:46:37,644 [BALL_UPDATE] Agent 7 | Sent ball=(4.51, 0.23) | Vision Ball=(4.54, 0.25) | Estimated Ball=[4.53, 0.25] Agent Pos=(1.48, 4.99)
+2025-11-09 18:46:37,645 [RESET] Voting list reset for cycle 28
+2025-11-09 18:46:38,692 [CYCLE_COMPLETE] Cycle 28 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:38,693 [BALL_UPDATE] Agent 7 | Sent ball=(4.54, 0.25) | Vision Ball=(4.56, 0.24) | Estimated Ball=[4.53, 0.24] Agent Pos=(1.49, 4.98)
+2025-11-09 18:46:38,697 [RESET] Voting list reset for cycle 29
+2025-11-09 18:46:39,788 [CYCLE_COMPLETE] Cycle 29 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:39,789 [BALL_UPDATE] Agent 7 | Sent ball=(4.71, 0.24) | Vision Ball=(4.86, 0.23) | Estimated Ball=[4.66, 0.24] Agent Pos=(1.57, 4.99)
+2025-11-09 18:46:39,789 [RESET] Voting list reset for cycle 30
+2025-11-09 18:46:40,889 [CYCLE_COMPLETE] Cycle 30 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:40,889 [BALL_UPDATE] Agent 7 | Sent ball=(4.96, 0.26) | Vision Ball=(5.03, 0.24) | Estimated Ball=[4.91, 0.23] Agent Pos=(1.73, 5.0)
+2025-11-09 18:46:40,889 [RESET] Voting list reset for cycle 31
+2025-11-09 18:46:41,931 [CYCLE_COMPLETE] Cycle 31 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:41,931 [BALL_UPDATE] Agent 7 | Sent ball=(5.06, 0.23) | Vision Ball=(5.14, 0.24) | Estimated Ball=[5.07, 0.24] Agent Pos=(1.82, 4.99)
+2025-11-09 18:46:41,931 [RESET] Voting list reset for cycle 32
+2025-11-09 18:46:43,051 [CYCLE_COMPLETE] Cycle 32 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:43,052 [BALL_UPDATE] Agent 7 | Sent ball=(5.19, 0.26) | Vision Ball=(5.21, 0.24) | Estimated Ball=[5.15, 0.25] Agent Pos=(1.9, 4.97)
+2025-11-09 18:46:43,052 [RESET] Voting list reset for cycle 33
+2025-11-09 18:46:44,121 [CYCLE_COMPLETE] Cycle 33 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:44,123 [BALL_UPDATE] Agent 7 | Sent ball=(5.23, 0.26) | Vision Ball=(5.24, 0.25) | Estimated Ball=[5.21, 0.24] Agent Pos=(1.94, 4.98)
+2025-11-09 18:46:44,124 [RESET] Voting list reset for cycle 34
+2025-11-09 18:46:45,116 [CYCLE_COMPLETE] Cycle 34 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:45,116 [BALL_UPDATE] Agent 7 | Sent ball=(5.26, 0.24) | Vision Ball=(5.29, 0.25) | Estimated Ball=[5.25, 0.24] Agent Pos=(1.97, 4.98)
+2025-11-09 18:46:45,116 [RESET] Voting list reset for cycle 35
+2025-11-09 18:46:46,131 [CYCLE_COMPLETE] Cycle 35 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:46,132 [BALL_UPDATE] Agent 7 | Sent ball=(5.28, 0.23) | Vision Ball=(5.29, 0.23) | Estimated Ball=[5.27, 0.23] Agent Pos=(1.99, 4.99)
+2025-11-09 18:46:46,132 [RESET] Voting list reset for cycle 36
+2025-11-09 18:46:47,227 [CYCLE_COMPLETE] Cycle 36 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:47,228 [BALL_UPDATE] Agent 7 | Sent ball=(5.29, 0.24) | Vision Ball=(5.77, 0.21) | Estimated Ball=[5.29, 0.24] Agent Pos=(2.0, 4.98)
+2025-11-09 18:46:47,228 [RESET] Voting list reset for cycle 37
+2025-11-09 18:46:48,438 [CYCLE_COMPLETE] Cycle 37 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:48,438 [BALL_UPDATE] Agent 7 | Sent ball=(6.04, 0.17) | Vision Ball=(6.42, 0.14) | Estimated Ball=[5.97, 0.19] Agent Pos=(2.18, 4.96)
+2025-11-09 18:46:48,438 [RESET] Voting list reset for cycle 38
+2025-11-09 18:46:49,663 [CYCLE_COMPLETE] Cycle 38 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:49,663 [BALL_UPDATE] Agent 7 | Sent ball=(6.61, 0.13) | Vision Ball=(6.82, 0.09) | Estimated Ball=[6.55, 0.13] Agent Pos=(2.45, 4.99)
+2025-11-09 18:46:49,663 [RESET] Voting list reset for cycle 39
+2025-11-09 18:46:50,807 [CYCLE_COMPLETE] Cycle 39 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:50,807 [BALL_UPDATE] Agent 7 | Sent ball=(6.92, 0.08) | Vision Ball=(7.08, 0.07) | Estimated Ball=[6.90, 0.08] Agent Pos=(2.73, 4.92)
+2025-11-09 18:46:50,807 [RESET] Voting list reset for cycle 40
+2025-11-09 18:46:51,998 [CYCLE_COMPLETE] Cycle 40 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:51,999 [BALL_UPDATE] Agent 7 | Sent ball=(7.15, 0.07) | Vision Ball=(7.23, 0.07) | Estimated Ball=[7.13, 0.07] Agent Pos=(3.0, 4.96)
+2025-11-09 18:46:51,999 [RESET] Voting list reset for cycle 41
+2025-11-09 18:46:53,324 [CYCLE_COMPLETE] Cycle 41 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:53,324 [BALL_UPDATE] Agent 7 | Sent ball=(7.27, 0.04) | Vision Ball=(7.3, 0.04) | Estimated Ball=[7.26, 0.06] Agent Pos=(3.23, 4.95)
+2025-11-09 18:46:53,324 [RESET] Voting list reset for cycle 42
+2025-11-09 18:46:54,545 [CYCLE_COMPLETE] Cycle 42 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:54,545 [BALL_UPDATE] Agent 7 | Sent ball=(7.38, 0.06) | Vision Ball=(7.39, 0.03) | Estimated Ball=[7.35, 0.05] Agent Pos=(3.35, 4.94)
+2025-11-09 18:46:54,546 [RESET] Voting list reset for cycle 43
+2025-11-09 18:46:55,905 [CYCLE_COMPLETE] Cycle 43 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:55,905 [BALL_UPDATE] Agent 7 | Sent ball=(7.42, 0.05) | Vision Ball=(7.43, 0.04) | Estimated Ball=[7.40, 0.04] Agent Pos=(3.4, 4.97)
+2025-11-09 18:46:55,905 [RESET] Voting list reset for cycle 44
+2025-11-09 18:46:56,956 [CYCLE_COMPLETE] Cycle 44 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:56,956 [BALL_UPDATE] Agent 7 | Sent ball=(7.45, 0.04) | Vision Ball=(7.46, 0.04) | Estimated Ball=[7.44, 0.05] Agent Pos=(3.43, 4.97)
+2025-11-09 18:46:56,956 [RESET] Voting list reset for cycle 45
+2025-11-09 18:46:58,183 [CYCLE_COMPLETE] Cycle 45 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:46:58,183 [BALL_UPDATE] Agent 7 | Sent ball=(7.48, 0.07) | Vision Ball=(7.46, 0.04) | Estimated Ball=[7.46, 0.03] Agent Pos=(3.44, 4.98)
+2025-11-09 18:46:58,183 [RESET] Voting list reset for cycle 46
+2025-11-09 18:46:59,407 [CYCLE_COMPLETE] Cycle 46 | Messages Sent: 1 | Messages Received: 7
+2025-11-09 18:46:59,408 [BALL_UPDATE] Agent 7 | Sent ball=(7.48, 0.04) | Vision Ball=(7.46, 0.02) | Estimated Ball=[7.47, 0.04] Agent Pos=(3.47, 4.99)
+2025-11-09 18:46:59,408 [RESET] Voting list reset for cycle 47
+2025-11-09 18:47:00,517 [CYCLE_COMPLETE] Cycle 47 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:00,517 [BALL_UPDATE] Agent 7 | Sent ball=(7.47, 0.03) | Vision Ball=(7.49, 0.04) | Estimated Ball=[7.48, 0.04] Agent Pos=(3.47, 4.98)
+2025-11-09 18:47:00,517 [RESET] Voting list reset for cycle 48
+2025-11-09 18:47:01,643 [CYCLE_COMPLETE] Cycle 48 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:01,644 [BALL_UPDATE] Agent 7 | Sent ball=(7.49, 0.04) | Vision Ball=(7.49, 0.04) | Estimated Ball=[7.49, 0.04] Agent Pos=(3.48, 5.0)
+2025-11-09 18:47:01,644 [RESET] Voting list reset for cycle 49
+2025-11-09 18:47:02,820 [CYCLE_COMPLETE] Cycle 49 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:02,821 [BALL_UPDATE] Agent 7 | Sent ball=(7.95, 0.06) | Vision Ball=(9.2, 0.04) | Estimated Ball=[7.56, 0.04] Agent Pos=(3.51, 4.97)
+2025-11-09 18:47:02,821 [RESET] Voting list reset for cycle 50
+2025-11-09 18:47:03,892 [CYCLE_COMPLETE] Cycle 50 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:03,892 [BALL_UPDATE] Agent 7 | Sent ball=(9.82, 0.07) | Vision Ball=(10.62, 0.1) | Estimated Ball=[9.60, 0.08] Agent Pos=(3.73, 4.95)
+2025-11-09 18:47:03,892 [RESET] Voting list reset for cycle 51
+2025-11-09 18:47:05,046 [CYCLE_COMPLETE] Cycle 51 | Messages Sent: 1 | Messages Received: 4
+2025-11-09 18:47:05,046 [BALL_UPDATE] Agent 7 | Sent ball=(10.97, 0.09) | Vision Ball=(11.48, 0.11) | Estimated Ball=[10.90, 0.09] Agent Pos=(4.04, 4.87)
+2025-11-09 18:47:05,046 [RESET] Voting list reset for cycle 52
+2025-11-09 18:47:06,164 [CYCLE_COMPLETE] Cycle 52 | Messages Sent: 1 | Messages Received: 4
+2025-11-09 18:47:06,164 [BALL_UPDATE] Agent 7 | Sent ball=(11.7, 0.1) | Vision Ball=(12.03, 0.1) | Estimated Ball=[11.72, 0.09] Agent Pos=(4.33, 4.82)
+2025-11-09 18:47:06,164 [RESET] Voting list reset for cycle 53
+2025-11-09 18:47:07,497 [CYCLE_COMPLETE] Cycle 53 | Messages Sent: 1 | Messages Received: 5
+2025-11-09 18:47:07,498 [BALL_UPDATE] Agent 7 | Sent ball=(12.13, 0.1) | Vision Ball=(12.36, 0.07) | Estimated Ball=[12.15, 0.08] Agent Pos=(4.59, 4.82)
+2025-11-09 18:47:07,498 [RESET] Voting list reset for cycle 54
+2025-11-09 18:47:08,755 [CYCLE_COMPLETE] Cycle 54 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:08,755 [BALL_UPDATE] Agent 7 | Sent ball=(12.45, 0.12) | Vision Ball=(12.58, 0.11) | Estimated Ball=[12.43, 0.11] Agent Pos=(4.93, 4.78)
+2025-11-09 18:47:08,755 [RESET] Voting list reset for cycle 55
+2025-11-09 18:47:09,640 [CYCLE_COMPLETE] Cycle 55 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:09,641 [BALL_UPDATE] Agent 7 | Sent ball=(12.6, 0.1) | Vision Ball=(12.69, 0.12) | Estimated Ball=[12.61, 0.11] Agent Pos=(5.22, 4.66)
+2025-11-09 18:47:09,641 [RESET] Voting list reset for cycle 56
+2025-11-09 18:47:10,599 [CYCLE_COMPLETE] Cycle 56 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:10,600 [BALL_UPDATE] Agent 7 | Sent ball=(12.74, 0.11) | Vision Ball=(12.79, 0.11) | Estimated Ball=[12.73, 0.10] Agent Pos=(5.53, 4.64)
+2025-11-09 18:47:10,600 [RESET] Voting list reset for cycle 57
+2025-11-09 18:47:11,496 [CYCLE_COMPLETE] Cycle 57 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:11,496 [BALL_UPDATE] Agent 7 | Sent ball=(12.8, 0.1) | Vision Ball=(12.84, 0.09) | Estimated Ball=[12.81, 0.11] Agent Pos=(5.81, 4.61)
+2025-11-09 18:47:11,496 [RESET] Voting list reset for cycle 58
+2025-11-09 18:47:12,323 [CYCLE_COMPLETE] Cycle 58 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:12,323 [BALL_UPDATE] Agent 7 | Sent ball=(12.86, 0.1) | Vision Ball=(12.9, 0.12) | Estimated Ball=[12.85, 0.10] Agent Pos=(6.12, 4.61)
+2025-11-09 18:47:12,323 [RESET] Voting list reset for cycle 59
+2025-11-09 18:47:13,087 [CYCLE_COMPLETE] Cycle 59 | Messages Sent: 1 | Messages Received: 6
+2025-11-09 18:47:13,087 [BALL_UPDATE] Agent 7 | Sent ball=(12.88, 0.12) | Vision Ball=(12.89, 0.11) | Estimated Ball=[12.88, 0.11] Agent Pos=(6.42, 4.67)
+2025-11-09 18:47:13,087 [RESET] Voting list reset for cycle 60

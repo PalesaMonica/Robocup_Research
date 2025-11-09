@@ -16,6 +16,8 @@ class World():
     VISUALSTEP = 0.04  # Fixed visual step time
     VISUALSTEP_MS = 40 # Fixed visual step time in milliseconds
 
+    MAX_BALL_DISTANCE=10.0 # maximum distance at which the ball is considered visible (m)
+
     # play modes in our favor
     M_OUR_KICKOFF = 0
     M_OUR_KICK_IN = 1
